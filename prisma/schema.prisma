@@ -1,0 +1,222 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+// ============================================
+// USER & AUTHENTICATION
+// ============================================
+
+model User {
+  id            String    @id @default(cuid())
+  email         String    @unique
+  name          String?
+  role          Role      @default(CLIENT)
+  passwordHash  String
+  phone         String?
+  avatar        String?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  
+  client        Client?
+  careUpdates   CareUpdate[]
+  messages      Message[] @relation("sender")
+  receivedMessages Message[] @relation("recipient")
+  sessions      Session[]
+  accounts      Account[]
+}
+
+enum Role {
+  CLIENT
+  ADMIN
+  CAREGIVER
+}
+
+// ============================================
+// CLIENT PORTAL
+// ============================================
+
+model Client {
+  id              String    @id @default(cuid())
+  userId          String    @unique
+  user            User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  patientName     String
+  relationship    String    // e.g., "Self", "Parent", "Spouse"
+  serviceType     String
+  subscriptionTier String?  // Free, Premium
+  isActive        Boolean   @default(true)
+  
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+  
+  bookings        Booking[]
+  careUpdates     CareUpdate[]
+  documents       Document[]
+  invoices        Invoice[]
+}
+
+model Booking {
+  id              String    @id @default(cuid())
+  clientId        String
+  client          Client    @relation(fields: [clientId], references: [id], onDelete: Cascade)
+  
+  serviceType     String
+  scheduledDate   DateTime
+  status          BookingStatus @default(PENDING)
+  consultationType String    // "Free", "Paid"
+  amount          Decimal?  @db.Decimal(10, 2)
+  paymentStatus   PaymentStatus?
+  
+  calendlyEventId String?
+  notes           String?
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+}
+
+enum BookingStatus {
+  PENDING
+  CONFIRMED
+  COMPLETED
+  CANCELLED
+}
+
+enum PaymentStatus {
+  PENDING
+  PAID
+  REFUNDED
+}
+
+model CareUpdate {
+  id          String    @id @default(cuid())
+  clientId    String
+  client      Client    @relation(fields: [clientId], references: [id], onDelete: Cascade)
+  authorId    String
+  author      User      @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  
+  title       String
+  content     String    @db.Text
+  mediaUrls   String[]  // R2 URLs
+  createdAt   DateTime  @default(now())
+  isUrgent    Boolean   @default(false)
+  readAt      DateTime?
+}
+
+model Document {
+  id          String    @id @default(cuid())
+  clientId    String
+  client      Client    @relation(fields: [clientId], references: [id], onDelete: Cascade)
+  
+  name        String
+  type        String    // "prescription", "test_result", "care_plan"
+  url         String    // R2 URL
+  fileSize    Int?      // Size in bytes
+  uploadedAt  DateTime  @default(now())
+}
+
+model Invoice {
+  id            String    @id @default(cuid())
+  clientId      String
+  client        Client    @relation(fields: [clientId], references: [id], onDelete: Cascade)
+  
+  invoiceNumber String    @unique
+  amount        Decimal   @db.Decimal(10, 2)
+  status        PaymentStatus
+  dueDate       DateTime
+  paidAt        DateTime?
+  
+  paystackRef   String?
+  stripeRef     String?
+  
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+}
+
+model Message {
+  id          String    @id @default(cuid())
+  senderId    String
+  sender      User      @relation("sender", fields: [senderId], references: [id], onDelete: Cascade)
+  
+  recipientId String
+  recipient   User      @relation("recipient", fields: [recipientId], references: [id], onDelete: Cascade)
+  
+  subject     String?
+  content     String    @db.Text
+  
+  isRead      Boolean   @default(false)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
+// ============================================
+// LEAD MANAGEMENT
+// ============================================
+
+model Lead {
+  id          String    @id @default(cuid())
+  email       String    @unique
+  name        String?
+  phone       String?
+  source      String    // "newsletter", "consultation", "download"
+  status      LeadStatus @default(NEW)
+  
+  tags        String[]
+  notes       String?   @db.Text
+  createdAt   DateTime  @default(now())
+  convertedAt DateTime?
+  updatedAt   DateTime  @updatedAt
+}
+
+enum LeadStatus {
+  NEW
+  CONTACTED
+  QUALIFIED
+  CONVERTED
+  LOST
+}
+
+// ============================================
+// NEXT AUTH
+// ============================================
+
+model Account {
+  id                 String  @id @default(cuid())
+  userId             String
+  type               String
+  provider           String
+  providerAccountId  String
+  refresh_token      String?  @db.Text
+  access_token       String?  @db.Text
+  expires_at         Int?
+  token_type         String?
+  scope              String?
+  id_token           String?  @db.Text
+  session_state      String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}

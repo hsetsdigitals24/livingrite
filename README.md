@@ -1,36 +1,118 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# LivingRite Care Platform - Boilerplate Setup
 
-## Getting Started
+This is a comprehensive Next.js 14+ healthcare platform with client portal, admin dashboard, booking system, and payment integration.
 
-First, run the development server:
+## ✅ Project Setup Complete
+
+### What's Included
+
+#### Core Framework
+- ✅ Next.js 14 with App Router
+- ✅ TypeScript with strict type safety
+- ✅ Tailwind CSS for styling
+- ✅ ESLint for code quality
+
+#### State Management & Data
+- ✅ Redux Toolkit with slices for auth, booking, and portal
+- ✅ RTK Query for API calls
+- ✅ React Hook Form for form handling
+- ✅ Zod for schema validation
+- ✅ SWR for client-side data fetching
+
+#### Backend & Database
+- ✅ Next.js API Routes
+- ✅ Prisma ORM configured
+- ✅ PostgreSQL schema with all models
+- ✅ NextAuth.js setup for authentication
+
+#### Content Management
+- ✅ Sanity.io schema for blog, services, testimonials, team
+- ✅ Sanity client configured
+- ✅ Image URL builder
+
+#### UI Components
+- ✅ Button component (multiple variants)
+- ✅ Card component (with header/body/footer)
+- ✅ Input component with validation
+- ✅ Badge component
+- ✅ Alert component
+
+## 📁 Project Structure
+
+```
+livingrite/
+├── src/
+│   ├── app/                    # Next.js App Router
+│   ├── components/             # React components
+│   ├── lib/                    # Core utilities
+│   ├── store/                  # Redux store
+│   ├── types/                  # TypeScript types
+│   ├── hooks/                  # Custom hooks
+│   └── utils/                  # Utilities
+├── prisma/
+│   └── schema.prisma           # Database schema
+├── sanity/
+│   ├── schemas/                # Sanity schemas
+│   └── sanity.config.ts
+└── .env.local                  # Environment variables
+```
+
+## 🚀 Getting Started
+
+### 1. Environment Setup
+
+Copy `.env.example` to `.env.local`:
+
+```bash
+cp .env.example .env.local
+```
+
+Update with your credentials.
+
+### 2. Database Setup
+
+```bash
+npx prisma migrate dev --name init
+npx prisma generate
+```
+
+### 3. Run Development Server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🔌 Third-Party Integrations
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Database**: PostgreSQL (Neon, Supabase, Railway)
+- **CMS**: Sanity.io
+- **Payments**: Paystack, Stripe
+- **Email**: Mailchimp
+- **Storage**: Cloudflare R2
+- **Authentication**: NextAuth.js
 
-## Learn More
+## 📝 Available Scripts
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npm run dev          # Development server
+npm run build        # Build for production
+npm start           # Start production server
+npm run lint        # Run linter
+npx prisma studio  # Open Prisma Studio
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📦 Tech Stack
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **Frontend**: Next.js 14, React 18, TypeScript, Tailwind CSS
+- **State Management**: Redux Toolkit, RTK Query
+- **Database**: Prisma, PostgreSQL
+- **Authentication**: NextAuth.js
+- **CMS**: Sanity.io
+- **Payments**: Paystack, Stripe
+- **Deployment**: Vercel
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+**Happy coding! 🚀**
