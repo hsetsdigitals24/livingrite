@@ -33,7 +33,7 @@ const sessionTypes = [
     features: ["Gait training", "Transfer techniques", "Fall prevention"],
     duration: "45-60 min",
     badge: null,
-    color: "from-green-500 to-emerald-500",
+    color: "from-accent to-primary",
   },
   {
     icon: HeartPulse,
@@ -60,7 +60,7 @@ const sessionTypes = [
     features: ["Gradual strengthening", "Breathing exercises", "Endurance building"],
     duration: "30-45 min",
     badge: null,
-    color: "from-teal-500 to-cyan-500",
+    color: "from-primary to-accent",
   },
 ]
 

@@ -300,12 +300,12 @@ export function ServiceDetail({ slug }: { slug: string }) {
     <section className="py-20 lg:py-28 bg-linear-to-b from-slate-800/50 to-slate-900 relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0 opacity-5">
-        <div className="absolute top-1/2 right-0 w-96 h-96 bg-emerald-500 rounded-full mix-blend-multiply filter blur-3xl"></div>
+        <div className="absolute top-1/2 right-0 w-96 h-96 bg-primary rounded-full mix-blend-multiply filter blur-3xl"></div>
       </div>
 
       <div className="container mx-auto px-4 lg:px-8 relative z-10">
         {/* Back Link */}
-        <Link href="/services" className="inline-flex items-center gap-2 text-emerald-400 hover:text-emerald-300 transition-colors mb-8 group animate-slide-up">
+        <Link href="/services" className="inline-flex items-center gap-2 text-primary hover:text-primary/80 transition-colors mb-8 group animate-slide-up">
           <ArrowRight className="w-4 h-4 group-hover:-translate-x-1 transition-transform rotate-180" />
           Back to Services
         </Link>
@@ -322,7 +322,7 @@ export function ServiceDetail({ slug }: { slug: string }) {
           {/* CTA Button */}
           <Button
             size="lg"
-            className="text-base font-semibold bg-linear-to-r from-emerald-500 to-teal-600 hover:shadow-2xl hover:shadow-emerald-500/30 hover:scale-105 transition-all duration-300 group animate-slide-up animation-delay-400"
+            className="text-base font-semibold bg-primary hover:shadow-2xl hover:shadow-primary/30 hover:scale-105 transition-all duration-300 group animate-slide-up animation-delay-400"
           >
             Book Free Consultation
             <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
@@ -347,7 +347,7 @@ export function ServiceDetail({ slug }: { slug: string }) {
                 <div className="grid sm:grid-cols-2 gap-4">
                   {service.benefits.map((benefit, idx) => (
                     <div key={idx} className="flex items-start gap-3">
-                      <CheckCircle2 className="w-5 h-5 text-emerald-400 mt-0.5 shrink-0" />
+                      <CheckCircle2 className="w-5 h-5 text-primary mt-0.5 shrink-0" />
                       <span className="text-gray-300">{benefit}</span>
                     </div>
                   ))}
@@ -365,7 +365,7 @@ export function ServiceDetail({ slug }: { slug: string }) {
                 <ul className="space-y-3">
                   {service.features.slice(0, 5).map((feature, idx) => (
                     <li key={idx} className="flex items-start gap-2">
-                      <span className="w-2 h-2 bg-emerald-400 rounded-full mt-2 shrink-0"></span>
+                      <span className="w-2 h-2 bg-primary rounded-full mt-2 shrink-0"></span>
                       <span className="text-sm text-gray-300">{feature}</span>
                     </li>
                   ))}
@@ -374,13 +374,13 @@ export function ServiceDetail({ slug }: { slug: string }) {
             </Card>
 
             {/* Ideal For Card */}
-            <Card className="bg-linear-to-br from-emerald-500/10 to-emerald-500/5 backdrop-blur-sm border-emerald-500/30">
-              <CardContent className="p-6">
-                <h3 className="text-lg font-bold text-emerald-300 mb-4">Ideal For</h3>
+            <Card className="bg-linear-to-br from-primary/10 to-primary/5 backdrop-blur-sm border-primary/30">
+              <CardContent className="pt-8">
+                <h3 className="text-lg font-bold text-primary/80 mb-4">Ideal For</h3>
                 <ul className="space-y-2">
                   {service.idealFor.map((ideal, idx) => (
                     <li key={idx} className="flex items-start gap-2">
-                      <span className="w-1.5 h-1.5 bg-emerald-400 rounded-full mt-2 shrink-0"></span>
+                      <span className="w-1.5 h-1.5 bg-primary rounded-full mt-2 shrink-0"></span>
                       <span className="text-sm text-gray-300">{ideal}</span>
                     </li>
                   ))}

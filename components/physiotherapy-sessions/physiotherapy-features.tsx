@@ -22,8 +22,8 @@ const features = [
     icon: Stethoscope,
     title: "Professional Assessment",
     description: "Comprehensive evaluation to develop the most effective treatment plan.",
-    color: "from-emerald-100 to-emerald-50",
-    iconColor: "text-emerald-600",
+    color: "from-primary/10 to-primary/5",
+    iconColor: "text-primary/80",
   },
   {
     icon: Home,
@@ -36,8 +36,8 @@ const features = [
     icon: Award,
     title: "Progress Tracking",
     description: "Regular assessments and monitoring to ensure optimal recovery progress.",
-    color: "from-teal-100 to-teal-50",
-    iconColor: "text-teal-600",
+    color: "from-primary/10 to-primary/5",
+    iconColor: "text-primary/80",
   },
   {
     icon: Shield,

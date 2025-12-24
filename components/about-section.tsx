@@ -13,8 +13,8 @@ export function AboutSection() {
     <section id="about" className="py-20 lg:py-28 bg-linear-to-b from-gray-50 to-white relative overflow-hidden">
       {/* Background Blobs */}
       <div className="absolute inset-0 opacity-10">
-        <div className="absolute -top-40 right-0 w-96 h-96 bg-emerald-400 rounded-full mix-blend-multiply filter blur-3xl"></div>
-        <div className="absolute -bottom-40 left-0 w-96 h-96 bg-teal-400 rounded-full mix-blend-multiply filter blur-3xl"></div>
+        <div className="absolute -top-40 right-0 w-96 h-96 bg-primary rounded-full mix-blend-multiply filter blur-3xl"></div>
+        <div className="absolute -bottom-40 left-0 w-96 h-96 bg-accent rounded-full mix-blend-multiply filter blur-3xl"></div>
       </div>
 
       <div className="container mx-auto px-4 lg:px-8 relative z-10">
@@ -29,7 +29,7 @@ export function AboutSection() {
               />
             </div>
             {/* Floating Card */}
-            <div className="absolute -bottom-8 -right-8 bg-linear-to-br from-emerald-500 to-teal-600 text-white p-6 rounded-2xl shadow-2xl shadow-emerald-500/30 max-w-xs border border-emerald-400/20 animate-float">
+            <div className="absolute -bottom-8 -right-8 bg-primary text-white p-6 rounded-2xl shadow-2xl shadow-primary/30 max-w-xs border border-primary/20 animate-float">
               <div className="text-4xl font-bold mb-1">98%</div>
               <div className="text-sm opacity-90">Client Satisfaction Rate</div>
             </div>
@@ -37,13 +37,13 @@ export function AboutSection() {
 
           {/* Content Side */}
           <div>
-            <div className="inline-flex items-center gap-2 bg-emerald-100 border border-emerald-300 text-emerald-700 px-4 py-2 rounded-full text-sm font-medium mb-6 animate-fade-in-scale">
-              <span className="w-2 h-2 bg-emerald-600 rounded-full"></span>
+            <div className="inline-flex items-center gap-2 bg-primary/10 border border-primary/30 text-primary px-4 py-2 rounded-full text-sm font-medium mb-6 animate-fade-in-scale">
+              <span className="w-2 h-2 bg-primary rounded-full"></span>
               About LivingRite Care
             </div>
 
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6 leading-tight animate-slide-up animation-delay-300">
-              Nigeria's Trusted Partner in <span className="bg-linear-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">Home Healthcare</span>
+              Nigeria's Trusted Partner in <span className="bg-linear-to-r from-primary via-accent to-primary bg-clip-text text-transparent">Home Healthcare</span>
             </h2>
 
             <p className="text-lg text-gray-700 mb-6 leading-relaxed animate-slide-up animation-delay-400">
@@ -61,13 +61,13 @@ export function AboutSection() {
             <div className="space-y-4 mb-8 animate-slide-up animation-delay-600">
               {values.map((value, index) => (
                 <div key={index} className="flex items-start gap-3">
-                  <CheckCircle2 className="h-6 w-6 text-emerald-600 shrink-0 mt-0.5" />
+                  <CheckCircle2 className="h-6 w-6 text-primary shrink-0 mt-0.5" />
                   <span className="text-gray-700">{value}</span>
                 </div>
               ))}
             </div>
 
-            <Button size="lg" className="font-semibold bg-linear-to-r from-emerald-500 to-teal-600 hover:shadow-2xl hover:shadow-emerald-500/30 hover:scale-105 transition-all duration-300 animate-slide-up animation-delay-700 group">
+            <Button size="lg" className="font-semibold bg-primary hover:shadow-2xl hover:shadow-primary/30 hover:scale-105 transition-all duration-300 animate-slide-up animation-delay-700 group">
               Read Our Story
               <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
             </Button>

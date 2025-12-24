@@ -57,7 +57,7 @@ export function PostStrokeTestimonials() {
       {/* Background Blobs */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-0 left-0 w-96 h-96 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl"></div>
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-emerald-500 rounded-full mix-blend-multiply filter blur-3xl"></div>
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-primary rounded-full mix-blend-multiply filter blur-3xl"></div>
       </div>
 
       <div className="container mx-auto px-4 lg:px-8 relative z-10">
@@ -79,11 +79,11 @@ export function PostStrokeTestimonials() {
               className="group animate-slide-up"
               style={{ animationDelay: `${index * 75}ms` }}
             >
-              <Card className="border-gray-700/50 bg-linear-to-br from-gray-800/40 to-gray-900/40 backdrop-blur-sm hover:border-emerald-500/50 transition-all duration-300 h-full hover:shadow-2xl hover:shadow-emerald-500/20">
+              <Card className="border-gray-700/50 bg-linear-to-br from-gray-800/40 to-gray-900/40 backdrop-blur-sm hover:border-primary/50 transition-all duration-300 h-full hover:shadow-2xl hover:shadow-primary/20">
                 <CardContent className="p-8">
                   {/* Quote */}
                   <div className="flex gap-4 mb-6">
-                    <Quote className="w-5 h-5 text-emerald-400 shrink-0" />
+                    <Quote className="w-5 h-5 text-primary/80 shrink-0" />
                     <p className="text-gray-300 italic leading-relaxed">
                       "{testimonial.quote}"
                     </p>
@@ -102,8 +102,8 @@ export function PostStrokeTestimonials() {
                   </div>
 
                   {/* Improvement Badge */}
-                  <div className="bg-emerald-500/20 border border-emerald-500/30 rounded-lg p-3 mb-6">
-                    <p className="text-sm text-emerald-300">
+                  <div className="bg-primary/20 border border-primary/30 rounded-lg p-3 mb-6">
+                    <p className="text-sm text-primary/80">
                       <span className="font-semibold">Recovery:</span>{" "}
                       {testimonial.improvement}
                     </p>
@@ -117,7 +117,7 @@ export function PostStrokeTestimonials() {
                     <p className="text-sm text-gray-400 mb-2">
                       {testimonial.relation}
                     </p>
-                    <p className="text-xs text-emerald-400 font-medium">
+                    <p className="text-xs text-primary font-medium">
                       {testimonial.condition}
                     </p>
                   </div>
@@ -128,14 +128,14 @@ export function PostStrokeTestimonials() {
         </div>
 
         {/* Stats Highlight */}
-        <Card className="border-emerald-500/30 bg-linear-to-r from-emerald-500/10 to-blue-500/10 backdrop-blur-sm max-w-2xl mx-auto animate-slide-up animation-delay-400">
+        <Card className="border-primary/30 bg-linear-to-r from-primary/10 to-accent/10 backdrop-blur-sm max-w-2xl mx-auto animate-slide-up animation-delay-400">
           <CardContent className="p-8 text-center">
             <h3 className="text-2xl font-bold text-white mb-4">
               Our Stroke Recovery Community
             </h3>
             <div className="grid grid-cols-3 gap-6">
               <div>
-                <div className="text-3xl font-bold text-emerald-400 mb-2">
+                <div className="text-3xl font-bold text-primary mb-2">
                   2,500+
                 </div>
                 <p className="text-sm text-gray-300">Patients Recovered</p>
@@ -165,7 +165,7 @@ export function PostStrokeTestimonials() {
             View video testimonials from stroke survivors and families sharing their
             recovery journey and transformation
           </p>
-          <button className="inline-flex items-center gap-2 px-6 py-3 bg-linear-to-r from-emerald-500 to-teal-600 text-white font-semibold rounded-lg hover:shadow-2xl hover:shadow-emerald-500/30 hover:scale-105 transition-all duration-300 group">
+          <button className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-white font-semibold rounded-lg hover:shadow-2xl hover:shadow-primary/30 hover:scale-105 transition-all duration-300 group">
             Watch Testimonials
             <span className="group-hover:translate-x-1 transition-transform">
               →

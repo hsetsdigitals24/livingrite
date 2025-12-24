@@ -18,8 +18,8 @@ const metrics: SuccessMetric[] = [
     number: "95%",
     label: "Recovery Success Rate",
     description: "Patients show significant improvement with our specialized care",
-    color: "from-emerald-500/20 to-emerald-500/10",
-    iconColor: "text-emerald-400",
+    color: "from-primary/20 to-primary/10",
+    iconColor: "text-primary/80",
   },
   {
     icon: Users,
@@ -34,8 +34,8 @@ const metrics: SuccessMetric[] = [
     number: "89%",
     label: "Return to Independence",
     description: "Patients regain ability to perform daily activities alone",
-    color: "from-cyan-500/20 to-cyan-500/10",
-    iconColor: "text-cyan-400",
+    color: "from-accent/20 to-accent/10",
+    iconColor: "text-accent/80",
   },
   {
     icon: Zap,
@@ -52,7 +52,7 @@ export function SuccessMetrics() {
     <section className="py-20 lg:py-28 bg-linear-to-b from-slate-900 via-slate-800/50 to-slate-900 relative overflow-hidden">
       {/* Background Blobs */}
       <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-emerald-500 rounded-full mix-blend-multiply filter blur-3xl"></div>
+        <div className="absolute top-0 right-0 w-96 h-96 bg-primary rounded-full mix-blend-multiply filter blur-3xl"></div>
         <div className="absolute bottom-0 left-1/2 w-96 h-96 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl"></div>
       </div>
 
@@ -77,7 +77,7 @@ export function SuccessMetrics() {
                 className="group animate-slide-up"
                 style={{ animationDelay: `${index * 75}ms` }}
               >
-                <Card className={`border-gray-700/50 bg-linear-to-br ${metric.color} backdrop-blur-sm hover:border-emerald-500/50 transition-all duration-300 h-full hover:shadow-2xl hover:shadow-emerald-500/20 hover:scale-105`}>
+                <Card className={`border-gray-700/50 bg-linear-to-br ${metric.color} backdrop-blur-sm hover:border-primary/50 transition-all duration-300 h-full hover:shadow-2xl hover:shadow-primary/20 hover:scale-105`}>
                   <CardContent className="p-8">
                     <div className={`inline-flex p-4 rounded-xl bg-linear-to-br ${metric.color} mb-6 group-hover:scale-110 transition-transform duration-300`}>
                       <Icon className={`w-6 h-6 ${metric.iconColor}`} />
@@ -86,7 +86,7 @@ export function SuccessMetrics() {
                     <div className="text-4xl font-bold text-white mb-2">
                       {metric.number}
                     </div>
-                    <h3 className="text-lg font-bold text-white mb-3 group-hover:text-emerald-300 transition-colors">
+                    <h3 className="text-lg font-bold text-white mb-3 group-hover:text-primary/80 transition-colors">
                       {metric.label}
                     </h3>
                     <p className="text-gray-400 text-sm leading-relaxed">
@@ -105,7 +105,7 @@ export function SuccessMetrics() {
             <h3 className="text-2xl font-bold text-white mb-6">What Our Recovery Outcomes Include</h3>
             <div className="grid md:grid-cols-2 gap-8">
               <div>
-                <h4 className="text-lg font-semibold text-emerald-300 mb-4">Physical Recovery</h4>
+                <h4 className="text-lg font-semibold text-primary/80 mb-4">Physical Recovery</h4>
                 <ul className="space-y-3">
                   {[
                     "Improved mobility and walking ability",
@@ -114,14 +114,14 @@ export function SuccessMetrics() {
                     "Reduced spasticity and pain",
                   ].map((item, idx) => (
                     <li key={idx} className="flex items-start gap-3">
-                      <span className="w-2 h-2 bg-emerald-400 rounded-full mt-2 shrink-0"></span>
+                      <span className="w-2 h-2 bg-primary rounded-full mt-2 shrink-0"></span>
                       <span className="text-gray-300">{item}</span>
                     </li>
                   ))}
                 </ul>
               </div>
               <div>
-                <h4 className="text-lg font-semibold text-emerald-300 mb-4">Cognitive & Emotional Recovery</h4>
+                <h4 className="text-lg font-semibold text-primary/80 mb-4">Cognitive & Emotional Recovery</h4>
                 <ul className="space-y-3">
                   {[
                     "Speech and language improvements",
@@ -130,7 +130,7 @@ export function SuccessMetrics() {
                     "Return to social engagement",
                   ].map((item, idx) => (
                     <li key={idx} className="flex items-start gap-3">
-                      <span className="w-2 h-2 bg-emerald-400 rounded-full mt-2 shrink-0"></span>
+                      <span className="w-2 h-2 bg-primary rounded-full mt-2 shrink-0"></span>
                       <span className="text-gray-300">{item}</span>
                     </li>
                   ))}
@@ -147,8 +147,8 @@ export function SuccessMetrics() {
             {[
               { time: "2-4 weeks", milestone: "Hospital to Home", color: "from-blue-500" },
               { time: "1-3 months", milestone: "Active Therapy Phase", color: "from-cyan-500" },
-              { time: "3-6 months", milestone: "Major Improvements", color: "from-emerald-500" },
-              { time: "6-12 months", milestone: "Long-term Gains", color: "from-teal-500" },
+              { time: "3-6 months", milestone: "Major Improvements", color: "from-primary" },
+              { time: "6-12 months", milestone: "Long-term Gains", color: "from-accent" },
             ].map((item, idx) => (
               <div
                 key={idx}

@@ -14,8 +14,8 @@ const services = [
     icon: Stethoscope,
     title: "Post-ICU Care",
     description: "Intensive home monitoring for patients transitioning from ICU with 24/7 supervision.",
-    color: "from-emerald-100 to-emerald-50",
-    iconColor: "text-emerald-600",
+    color: "from-primary/10 to-primary/5",
+    iconColor: "text-primary/80",
   },
   {
     icon: HeartPulse,
@@ -66,15 +66,15 @@ export function ServicesSection() {
     <section id="services" className="py-20 lg:py-28 bg-linear-to-b from-white via-gray-50/50 to-white relative overflow-hidden">
       {/* Background Blobs */}
       <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-emerald-400 rounded-full mix-blend-multiply filter blur-3xl"></div>
-        <div className="absolute bottom-0 left-1/2 w-96 h-96 bg-teal-400 rounded-full mix-blend-multiply filter blur-3xl"></div>
+        <div className="absolute top-0 right-0 w-96 h-96 bg-primary rounded-full mix-blend-multiply filter blur-3xl"></div>
+        <div className="absolute bottom-0 left-1/2 w-96 h-96 bg-accent rounded-full mix-blend-multiply filter blur-3xl"></div>
       </div>
 
       <div className="container mx-auto px-4 lg:px-8 relative z-10">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 bg-emerald-100 border border-emerald-300 text-emerald-700 px-4 py-2 rounded-full text-sm font-medium mb-6 animate-fade-in-scale">
-            <span className="w-2 h-2 bg-emerald-600 rounded-full"></span>
+          <div className="inline-flex items-center gap-2 bg-primary/10 border border-primary/30 text-primary px-4 py-2 rounded-full text-sm font-medium mb-6 animate-fade-in-scale">
+            <span className="w-2 h-2 bg-primary rounded-full"></span>
             Our Services
           </div>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 animate-slide-up animation-delay-200">
@@ -96,14 +96,14 @@ export function ServicesSection() {
                 className="group animate-slide-up"
                 style={{ animationDelay: `${index * 75}ms` }}
               >
-                <Card className="h-full border-gray-300 bg-white hover:border-emerald-400 transition-all duration-300 hover:shadow-2xl hover:shadow-emerald-200 hover:scale-105">
+                <Card className="h-full border-gray-300 bg-white hover:border-primary/50 transition-all duration-300 hover:shadow-2xl hover:shadow-primary/20 hover:scale-105">
                   <CardContent className="p-6">
                     <div className={`w-12 h-12 rounded-xl bg-linear-to-br ${service.color} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}>
                       <Icon className={`h-6 w-6 ${service.iconColor}`} />
                     </div>
                     <h3 className="text-lg font-semibold text-gray-900 mb-3">{service.title}</h3>
                     <p className="text-gray-700 text-sm mb-4 leading-relaxed">{service.description}</p>
-                    <button className="text-emerald-600 font-medium text-sm flex items-center gap-1 group-hover:gap-2 transition-all hover:text-emerald-700">
+                    <button className="text-primary font-medium text-sm flex items-center gap-1 group-hover:gap-2 transition-all hover:text-primary/80">
                       Learn More
                       <ArrowRight className="h-4 w-4" />
                     </button>
@@ -126,7 +126,7 @@ export function ServicesSection() {
 
         {/* View All CTA */}
         <div className="text-center">
-          <Button size="lg" className="font-semibold bg-linear-to-r from-emerald-500 to-teal-600 hover:shadow-2xl hover:shadow-emerald-500/30 hover:scale-105 transition-all duration-300 animate-slide-up animation-delay-600">
+          <Button size="lg" className="font-semibold bg-primary hover:shadow-2xl hover:shadow-primary/30 hover:scale-105 transition-all duration-300 animate-slide-up animation-delay-600">
             View All Services
             <ArrowRight className="ml-2 h-5 w-5" />
           </Button>

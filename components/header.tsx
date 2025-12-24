@@ -10,6 +10,8 @@ import {
 } from "@/components/ui/dropdown-menu"
 import { Menu, X, ChevronDown } from "lucide-react"
 import { useState, useEffect } from "react"
+import logo from "@/public/logo.png"
+import Image from "next/image"
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -31,19 +33,19 @@ export function Header() {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 group">
-            <div className="w-10 h-10 rounded-lg bg-linear-to-br from-emerald-500 to-teal-600 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-              {/* <span className="text-white font-bold text-xl">L</span> */}
+            <div className="w-35 h-10 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+             <Image src={logo} alt="LivingRite Care Logo" />
             </div>
-            <span className="font-bold text-xl bg-linear-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">
-              LivingRite<span className="text-emerald-600">Care</span>
-            </span>
+            {/* <span className="font-bold text-xl bg-primary bg-clip-text text-transparent">
+              LivingRite<span className="text-primary">Care</span>
+            </span> */}
           </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
             {/* Services Dropdown */}
             <DropdownMenu>
-              <DropdownMenuTrigger className="flex items-center gap-1 text-gray-700 hover:text-emerald-600 transition-colors font-medium group">
+              <DropdownMenuTrigger className="flex items-center gap-1 text-gray-700 hover:text-primary transition-colors font-medium group">
                 Services
                 <ChevronDown className="h-4 w-4 transition-transform group-data-[state=open]:rotate-180" />
               </DropdownMenuTrigger>
@@ -78,23 +80,23 @@ export function Header() {
               </DropdownMenuContent>
             </DropdownMenu>
 
-            <Link href="#about" className="relative text-gray-700 hover:text-emerald-600 transition-colors font-medium group">
+            <Link href="#about" className="relative text-gray-700 hover:text-primary transition-colors font-medium group">
               About
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-linear-to-r from-emerald-500 to-teal-600 group-hover:w-full transition-all duration-300"></span>
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"></span>
             </Link>
-            <Link href="#testimonials" className="relative text-gray-700 hover:text-emerald-600 transition-colors font-medium group">
+            <Link href="#testimonials" className="relative text-gray-700 hover:text-primary transition-colors font-medium group">
               Testimonials
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-linear-to-r from-emerald-500 to-teal-600 group-hover:w-full transition-all duration-300"></span>
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"></span>
             </Link>
-            <Link href="#resources" className="relative text-gray-700 hover:text-emerald-600 transition-colors font-medium group">
+            <Link href="#resources" className="relative text-gray-700 hover:text-primary transition-colors font-medium group">
               Resources
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-linear-to-r from-emerald-500 to-teal-600 group-hover:w-full transition-all duration-300"></span>
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"></span>
             </Link>
           </div>
 
           {/* CTA Button */}
           <div className="hidden md:block">
-            <Button size="lg" className="font-semibold bg-linear-to-r from-emerald-500 to-teal-600 hover:shadow-lg hover:shadow-emerald-500/20 hover:scale-105 transition-all duration-300">
+            <Button size="lg" className="font-semibold rounded-full bg-primary hover:shadow-lg hover:shadow-primary/20 hover:scale-105 transition-all duration-300">
               Book Free Consultation
             </Button>
           </div>
@@ -102,7 +104,7 @@ export function Header() {
           {/* Mobile Menu Button */}
           <button 
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)} 
-            className="md:hidden p-2 text-gray-700 hover:text-emerald-600 transition-colors" 
+            className="md:hidden p-2 text-gray-700 hover:text-primary transition-colors" 
             aria-label="Toggle menu"
           >
             {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -114,7 +116,7 @@ export function Header() {
           <div className="md:hidden animate-slide-up bg-white/98 backdrop-blur-sm border-t border-gray-200 py-4">
             <div className="flex flex-col gap-2">
               <DropdownMenu>
-                <DropdownMenuTrigger className="w-full flex items-center gap-1 text-gray-700 hover:text-emerald-600 transition-colors font-medium py-2 px-4 rounded-lg hover:bg-emerald-50">
+                <DropdownMenuTrigger className="w-full flex items-center gap-1 text-gray-700 hover:text-primary transition-colors font-medium py-2 px-4 rounded-lg hover:bg-primary/5">
                   Services
                   <ChevronDown className="h-4 w-4 ml-auto" />
                 </DropdownMenuTrigger>
@@ -168,28 +170,28 @@ export function Header() {
               </DropdownMenu>
               <Link
                 href="#about"
-                className="text-gray-700 hover:text-emerald-600 transition-colors font-medium py-2 px-4 rounded-lg hover:bg-emerald-50"
+                className="text-gray-700 hover:text-primary transition-colors font-medium py-2 px-4 rounded-lg hover:bg-primary/5"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 About
               </Link>
               <Link
                 href="#testimonials"
-                className="text-gray-700 hover:text-emerald-600 transition-colors font-medium py-2 px-4 rounded-lg hover:bg-emerald-50"
+                className="text-gray-700 hover:text-primary transition-colors font-medium py-2 px-4 rounded-lg hover:bg-primary/5"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Testimonials
               </Link>
               <Link
                 href="#resources"
-                className="text-gray-700 hover:text-emerald-600 transition-colors font-medium py-2 px-4 rounded-lg hover:bg-emerald-50"
+                className="text-gray-700 hover:text-primary transition-colors font-medium py-2 px-4 rounded-lg hover:bg-primary/5"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Resources
               </Link>
               <Button 
                 size="lg" 
-                className="w-full mt-2 font-semibold bg-linear-to-r from-emerald-500 to-teal-600 hover:scale-105 transition-transform duration-300"
+                className="w-full mt-2 rounded-full font-semibold bg-primary hover:scale-105 transition-transform duration-300"
               >
                 Book Free Consultation
               </Button>

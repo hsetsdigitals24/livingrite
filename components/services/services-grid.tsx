@@ -42,7 +42,7 @@ const ServiceCard = ({
   return (
     <Link href={`/services/${slug}`}>
       <Card
-        className="h-full border-gray-700/50 bg-gradient-to-br from-gray-800/40 to-gray-900/40 backdrop-blur-sm hover:border-emerald-500/50 transition-all duration-300 hover:shadow-2xl hover:shadow-emerald-500/20 hover:scale-105 cursor-pointer group animate-slide-up"
+        className="h-full border-gray-700/50 bg-gradient-to-br from-gray-800/40 to-gray-900/40 backdrop-blur-sm hover:border-primary/50 transition-all duration-300 hover:shadow-2xl hover:shadow-primary/20 hover:scale-105 cursor-pointer group animate-slide-up"
         style={{ animationDelay: `${index * 75}ms` }}
       >
         <CardContent className="p-8">
@@ -52,7 +52,7 @@ const ServiceCard = ({
           </div>
 
           {/* Content */}
-          <h3 className="text-xl font-bold text-white mb-3 group-hover:text-emerald-300 transition-colors">
+          <h3 className="text-xl font-bold text-white mb-3 group-hover:text-primary/80 transition-colors">
             {title}
           </h3>
           <p className="text-gray-300 mb-6 leading-relaxed">{description}</p>
@@ -62,7 +62,7 @@ const ServiceCard = ({
             <div className="mb-6 space-y-2">
               {features.slice(0, 2).map((feature, idx) => (
                 <div key={idx} className="flex items-center gap-2 text-sm text-gray-400">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                  <span className="w-1.5 h-1.5 rounded-full bg-primary/80"></span>
                   {feature}
                 </div>
               ))}
@@ -70,7 +70,7 @@ const ServiceCard = ({
           )}
 
           {/* CTA */}
-          <div className="flex items-center gap-2 text-emerald-400 font-semibold group-hover:translate-x-2 transition-transform duration-300">
+          <div className="flex items-center gap-2 text-primary font-semibold group-hover:translate-x-2 transition-transform duration-300">
             Learn More
             <ArrowRight className="w-4 h-4" />
           </div>
@@ -96,8 +96,8 @@ const services: Array<ServiceCardProps & { features: string[] }> = [
     title: "Post-ICU Care",
     description: "Intensive home monitoring for patients transitioning from ICU with 24/7 supervision and expert care.",
     slug: "post-icu-care",
-    color: "from-emerald-500/20 to-emerald-500/10",
-    iconColor: "text-emerald-400",
+    color: "from-primary/20 to-primary/10",
+    iconColor: "text-primary/80",
     features: ["Continuous Monitoring", "Vital Signs Tracking", "Emergency Support"],
     index: 1,
   },
@@ -168,8 +168,8 @@ export function ServicesGrid() {
     <section className="py-20 lg:py-28 bg-linear-to-b from-slate-900 via-slate-800/50 to-slate-900 relative overflow-hidden">
       {/* Background Blobs */}
       <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-emerald-500 rounded-full mix-blend-multiply filter blur-3xl"></div>
-        <div className="absolute bottom-0 left-1/2 w-96 h-96 bg-teal-500 rounded-full mix-blend-multiply filter blur-3xl"></div>
+        <div className="absolute top-0 right-0 w-96 h-96 bg-primary rounded-full mix-blend-multiply filter blur-3xl"></div>
+        <div className="absolute bottom-0 left-1/2 w-96 h-96 bg-accent rounded-full mix-blend-multiply filter blur-3xl"></div>
       </div>
 
       <div className="container mx-auto px-4 lg:px-8 relative z-10">
@@ -227,9 +227,9 @@ export function ServicesGrid() {
                   className="group animate-slide-up"
                   style={{ animationDelay: `${idx * 100}ms` }}
                 >
-                  <div className="bg-gradient-to-br from-gray-800/40 to-gray-900/40 backdrop-blur-sm border border-gray-700/50 rounded-xl p-8 hover:border-emerald-500/50 transition-all duration-300 hover:shadow-2xl hover:shadow-emerald-500/20">
-                    <div className="inline-flex p-3 rounded-lg bg-emerald-500/20 mb-6 group-hover:scale-110 transition-transform duration-300">
-                      <Icon className="w-6 h-6 text-emerald-400" />
+                  <div className="bg-gradient-to-br from-gray-800/40 to-gray-900/40 backdrop-blur-sm border border-gray-700/50 rounded-xl p-8 hover:border-primary/50 transition-all duration-300 hover:shadow-2xl hover:shadow-primary/20">
+                    <div className="inline-flex p-3 rounded-lg bg-primary/20 mb-6 group-hover:scale-110 transition-transform duration-300">
+                      <Icon className="w-6 h-6 text-primary/80" />
                     </div>
                     <h4 className="text-lg font-bold text-white mb-3">{benefit.title}</h4>
                     <p className="text-gray-400">{benefit.description}</p>
@@ -247,7 +247,7 @@ export function ServicesGrid() {
           </p>
           <Button
             size="lg"
-            className="text-base font-semibold bg-gradient-to-r from-emerald-500 to-teal-600 hover:shadow-2xl hover:shadow-emerald-500/30 hover:scale-105 transition-all duration-300 group"
+            className="text-base font-semibold bg-primary hover:shadow-2xl hover:shadow-primary/30 hover:scale-105 transition-all duration-300 group"
           >
             Book Your Free Consultation
             <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />

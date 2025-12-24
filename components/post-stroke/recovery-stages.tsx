@@ -76,7 +76,7 @@ export function RecoveryStages() {
     <section className="py-20 lg:py-28 bg-linear-to-b from-slate-800/50 to-slate-900 relative overflow-hidden">
       {/* Background Blobs */}
       <div className="absolute inset-0 opacity-5">
-        <div className="absolute top-1/2 right-0 w-96 h-96 bg-emerald-500 rounded-full mix-blend-multiply filter blur-3xl"></div>
+        <div className="absolute top-1/2 right-0 w-96 h-96 bg-primary rounded-full mix-blend-multiply filter blur-3xl"></div>
         <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl"></div>
       </div>
 
@@ -104,29 +104,29 @@ export function RecoveryStages() {
                 <div className="flex gap-6">
                   {/* Phase Indicator */}
                   <div className="flex flex-col items-center">
-                    <div className="flex h-16 w-16 items-center justify-center rounded-full bg-linear-to-br from-emerald-500 to-teal-600 text-white font-bold flex-shrink-0 mb-4">
+                    <div className="flex h-16 w-16 items-center justify-center rounded-full bg-primary text-white font-bold flex-shrink-0 mb-4">
                       <span className="text-sm">{stage.phase}</span>
                     </div>
                     {index < recoveryStages.length - 1 && (
-                      <div className="w-1 h-32 bg-linear-to-b from-emerald-500/50 to-transparent"></div>
+                      <div className="w-1 h-32 bg-gradient-to-b from-primary/50 to-transparent"></div>
                     )}
                   </div>
 
                   {/* Content */}
                   <div className="flex-1 pb-8">
-                    <Card className="border-gray-700/50 bg-linear-to-br from-gray-800/40 to-gray-900/40 backdrop-blur-sm hover:border-emerald-500/50 transition-all duration-300 group">
+                    <Card className="border-gray-700/50 bg-linear-to-br from-gray-800/40 to-gray-900/40 backdrop-blur-sm hover:border-primary/50 transition-all duration-300 group">
                       <CardContent className="p-6">
                         <div className="flex items-start justify-between mb-3">
                           <div>
-                            <h3 className="text-xl font-bold text-white mb-1 group-hover:text-emerald-300 transition-colors">
+                            <h3 className="text-xl font-bold text-white mb-1 group-hover:text-primary/80 transition-colors">
                               {stage.title}
                             </h3>
-                            <p className="text-sm text-emerald-400 font-semibold">
+                            <p className="text-sm text-primary font-semibold">
                               {stage.duration}
                             </p>
                           </div>
-                          <div className="inline-flex p-3 rounded-lg bg-emerald-500/20">
-                            <Icon className="w-6 h-6 text-emerald-400" />
+                          <div className="inline-flex p-3 rounded-lg bg-primary/20">
+                            <Icon className="w-6 h-6 text-primary/80" />
                           </div>
                         </div>
 
@@ -145,7 +145,7 @@ export function RecoveryStages() {
                                 key={idx}
                                 className="flex items-start gap-2"
                               >
-                                <CheckCircle2 className="w-4 h-4 text-emerald-400 mt-1 shrink-0" />
+                                <CheckCircle2 className="w-4 h-4 text-primary/80 mt-1 shrink-0" />
                                 <span className="text-sm text-gray-300">
                                   {milestone}
                                 </span>
@@ -186,7 +186,7 @@ export function RecoveryStages() {
               className="text-center animate-slide-up"
               style={{ animationDelay: `${400 + idx * 100}ms` }}
             >
-              <div className="text-4xl font-bold text-emerald-400 mb-2">
+              <div className="text-4xl font-bold text-primary mb-2">
                 {stat.number}
               </div>
               <div className="text-sm font-semibold text-white mb-1">

@@ -26,8 +26,8 @@ const features: Feature[] = [
     title: "Specialized Stroke Nurses",
     description:
       "Hospital-trained nurses with specialized stroke care certification and years of post-acute care experience",
-    color: "from-emerald-500/20 to-emerald-500/10",
-    iconColor: "text-emerald-400",
+    color: "from-primary/20 to-primary/10",
+    iconColor: "text-primary/80",
   },
   {
     icon: Brain,
@@ -82,8 +82,8 @@ const features: Feature[] = [
     title: "Comprehensive Monitoring",
     description:
       "Regular assessment and progress tracking with detailed reports shared with you and your doctor",
-    color: "from-teal-500/20 to-teal-500/10",
-    iconColor: "text-teal-400",
+    color: "from-primary/20 to-primary/10",
+    iconColor: "text-primary/80",
   },
 ]
 
@@ -92,7 +92,7 @@ export function PostStrokeFeatures() {
     <section className="py-20 lg:py-28 bg-linear-to-b from-slate-900 via-slate-800/50 to-slate-900 relative overflow-hidden">
       {/* Background Blobs */}
       <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-emerald-500 rounded-full mix-blend-multiply filter blur-3xl"></div>
+        <div className="absolute top-0 right-0 w-96 h-96 bg-primary rounded-full mix-blend-multiply filter blur-3xl"></div>
         <div className="absolute bottom-0 left-1/2 w-96 h-96 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl"></div>
       </div>
 
@@ -117,13 +117,13 @@ export function PostStrokeFeatures() {
                 className="group animate-slide-up"
                 style={{ animationDelay: `${index * 75}ms` }}
               >
-                <Card className={`border-gray-700/50 bg-linear-to-br ${feature.color} backdrop-blur-sm hover:border-emerald-500/50 transition-all duration-300 h-full hover:shadow-2xl hover:shadow-emerald-500/20 hover:scale-105`}>
+                <Card className={`border-gray-700/50 bg-linear-to-br ${feature.color} backdrop-blur-sm hover:border-primary/50 transition-all duration-300 h-full hover:shadow-2xl hover:shadow-primary/20 hover:scale-105`}>
                   <CardContent className="p-6">
                     <div className={`inline-flex p-3 rounded-lg bg-linear-to-br ${feature.color} mb-4 group-hover:scale-110 transition-transform duration-300`}>
                       <Icon className={`w-6 h-6 ${feature.iconColor}`} />
                     </div>
 
-                    <h3 className="text-lg font-bold text-white mb-2 group-hover:text-emerald-300 transition-colors">
+                    <h3 className="text-lg font-bold text-white mb-2 group-hover:text-primary/80 transition-colors">
                       {feature.title}
                     </h3>
                     <p className="text-gray-400 text-sm leading-relaxed">
@@ -141,7 +141,7 @@ export function PostStrokeFeatures() {
           <p className="text-gray-300 mb-6">
             Ready to begin your stroke recovery journey at home?
           </p>
-          <button className="inline-flex items-center gap-2 px-8 py-3 bg-linear-to-r from-emerald-500 to-teal-600 text-white font-semibold rounded-lg hover:shadow-2xl hover:shadow-emerald-500/30 hover:scale-105 transition-all duration-300 group">
+          <button className="inline-flex items-center gap-2 px-8 py-3 bg-primary text-white font-semibold rounded-lg hover:shadow-2xl hover:shadow-primary/30 hover:scale-105 transition-all duration-300 group">
             Book Your Free Consultation Today
             <span className="group-hover:translate-x-1 transition-transform">
               →

@@ -46,8 +46,8 @@ const benefits = [
     icon: TrendingUp,
     title: "Progress Tracking",
     description: "Regular assessments and detailed reports to monitor your improvement journey.",
-    color: "text-teal-500",
-    bgColor: "bg-teal-50",
+    color: "text-primary/80",
+    bgColor: "bg-primary/10",
   },
 ]
 

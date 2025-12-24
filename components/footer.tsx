@@ -33,7 +33,7 @@ export function Footer() {
     <footer className="bg-linear-to-b from-gray-100 to-gray-200 text-gray-900 relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-0 left-1/3 w-96 h-96 bg-emerald-400 rounded-full mix-blend-multiply filter blur-3xl"></div>
+        <div className="absolute top-0 left-1/3 w-96 h-96 bg-primary rounded-full mix-blend-multiply filter blur-3xl"></div>
       </div>
 
       <div className="container mx-auto px-4 lg:px-8 py-16 relative z-10">
@@ -42,10 +42,10 @@ export function Footer() {
           {/* Brand Column */}
           <div className="lg:col-span-2 animate-slide-up animation-delay-100">
             <div className="flex items-center gap-2 mb-4">
-              <div className="w-10 h-10 rounded-lg bg-linear-to-br from-emerald-500 to-teal-600 flex items-center justify-center">
+              <div className="w-10 h-10 rounded-lg bg-linear-to-br from-primary to-accent flex items-center justify-center">
                 <span className="text-white font-bold text-xl">L</span>
               </div>
-              <span className="font-bold text-xl bg-linear-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">
+              <span className="font-bold text-xl bg-linear-to-r from-primary to-accent bg-clip-text text-transparent">
                 LivingRite Care
               </span>
             </div>
@@ -56,15 +56,15 @@ export function Footer() {
             {/* Contact Info */}
             <div className="space-y-3 text-sm">
               <div className="flex items-start gap-3">
-                <MapPin className="h-5 w-5 shrink-0 mt-0.5 text-emerald-400" />
+                <MapPin className="h-5 w-5 shrink-0 mt-0.5 text-primary" />
                 <span className="text-gray-900">123 Victoria Island, Lagos, Nigeria</span>
               </div>
               <div className="flex items-center gap-3">
-                <Phone className="h-5 w-5 shrink-0 text-emerald-400" />
+                <Phone className="h-5 w-5 shrink-0 text-primary" />
                 <span className="text-gray900">+234 XXX XXXX XXX</span>
               </div>
               <div className="flex items-center gap-3">
-                <Mail className="h-5 w-5 shrink-0 text-emerald-400" />
+                <Mail className="h-5 w-5 shrink-0 text-primary" />
                 <span className="text-gray-900">info@livingritecare.ng</span>
               </div>
             </div>
@@ -76,7 +76,7 @@ export function Footer() {
             <ul className="space-y-3">
               {footerLinks.services.map((link) => (
                 <li key={link.name}>
-                  <Link href={link.href} className="text-gray-900 hover:text-emerald-400 transition-colors text-sm">
+                  <Link href={link.href} className="text-gray-900 hover:text-primary transition-colors text-sm">
                     {link.name}
                   </Link>
                 </li>
@@ -90,7 +90,7 @@ export function Footer() {
             <ul className="space-y-3">
               {footerLinks.company.map((link) => (
                 <li key={link.name}>
-                  <Link href={link.href} className="text-gray-900 hover:text-emerald-400 transition-colors text-sm">
+                  <Link href={link.href} className="text-gray-900 hover:text-primary transition-colors text-sm">
                     {link.name}
                   </Link>
                 </li>
@@ -106,11 +106,11 @@ export function Footer() {
               <Input 
                 type="email" 
                 placeholder="Your email" 
-                className="bg-gray-800/50 border-gray-700 text-gray-900 placeholder:text-gray-500 focus:border-emerald-500"
+                className="bg-gray-800/50 border-gray-700 text-gray-900 placeholder:text-gray-500 focus:border-primary"
               />
               <Button 
                 size="sm"
-                className="bg-linear-to-r from-emerald-500 to-teal-600 hover:shadow-lg hover:shadow-emerald-500/20 transition-all duration-300"
+                className="bg-primary hover:shadow-lg hover:shadow-primary/20 transition-all duration-300"
               >
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
@@ -125,21 +125,21 @@ export function Footer() {
           <div className="flex items-center gap-4">
             <Link
               href="#"
-              className="w-10 h-10 rounded-full bg-gray-800 hover:bg-emerald-500/20 hover:text-emerald-400 flex items-center justify-center transition-all duration-300 text-gray-400"
+              className="w-10 h-10 rounded-full bg-gray-800 hover:bg-primary/20 hover:text-primary flex items-center justify-center transition-all duration-300 text-gray-400"
               aria-label="Facebook"
             >
               <Facebook className="h-5 w-5" />
             </Link>
             <Link
               href="#"
-              className="w-10 h-10 rounded-full bg-gray-800 hover:bg-emerald-500/20 hover:text-emerald-400 flex items-center justify-center transition-all duration-300 text-gray-400"
+              className="w-10 h-10 rounded-full bg-gray-800 hover:bg-primary/20 hover:text-primary flex items-center justify-center transition-all duration-300 text-gray-400"
               aria-label="Twitter"
             >
               <Twitter className="h-5 w-5" />
             </Link>
             <Link
               href="#"
-              className="w-10 h-10 rounded-full bg-gray-800 hover:bg-emerald-500/20 hover:text-emerald-400 flex items-center justify-center transition-all duration-300 text-gray-400"
+              className="w-10 h-10 rounded-full bg-gray-800 hover:bg-primary/20 hover:text-primary flex items-center justify-center transition-all duration-300 text-gray-400"
               aria-label="LinkedIn"
             >
               <Linkedin className="h-5 w-5" />
@@ -153,10 +153,10 @@ export function Footer() {
 
           {/* Legal Links */}
           <div className="flex gap-6 text-sm">
-            <Link href="#" className="text-gray-900 hover:text-emerald-400 transition-colors">
+            <Link href="#" className="text-gray-900 hover:text-primary transition-colors">
               Privacy Policy
             </Link>
-            <Link href="#" className="text-gray-900 hover:text-emerald-400 transition-colors">
+            <Link href="#" className="text-gray-900 hover:text-primary transition-colors">
               Terms of Service
             </Link>
           </div>

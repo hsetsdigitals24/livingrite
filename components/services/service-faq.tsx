@@ -237,8 +237,8 @@ export function ServiceFAQ({ serviceSlug }: { serviceSlug: string }) {
     <section className="py-20 lg:py-28 bg-linear-to-b from-slate-900 via-slate-800/50 to-slate-900 relative overflow-hidden">
       {/* Background Blobs */}
       <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-emerald-500 rounded-full mix-blend-multiply filter blur-3xl"></div>
-        <div className="absolute bottom-0 left-1/2 w-96 h-96 bg-teal-500 rounded-full mix-blend-multiply filter blur-3xl"></div>
+        <div className="absolute top-0 right-0 w-96 h-96 bg-primary rounded-full mix-blend-multiply filter blur-3xl"></div>
+        <div className="absolute bottom-0 left-1/2 w-96 h-96 bg-accent rounded-full mix-blend-multiply filter blur-3xl"></div>
       </div>
 
       <div className="container mx-auto px-4 lg:px-8 relative z-10">
@@ -260,7 +260,7 @@ export function ServiceFAQ({ serviceSlug }: { serviceSlug: string }) {
               className="group animate-slide-up"
               style={{ animationDelay: `${index * 50}ms` }}
             >
-              <summary className="flex cursor-pointer items-center justify-between rounded-lg border border-gray-700/50 bg-linear-to-br from-gray-800/40 to-gray-900/40 backdrop-blur-sm px-6 py-4 text-lg font-semibold text-white hover:border-emerald-500/50 transition-all duration-300 group-open:border-emerald-500/50 group-open:bg-linear-to-br group-open:from-gray-700/40 group-open:to-gray-800/40">
+              <summary className="flex cursor-pointer items-center justify-between rounded-lg border border-gray-700/50 bg-linear-to-br from-gray-800/40 to-gray-900/40 backdrop-blur-sm px-6 py-4 text-lg font-semibold text-white hover:border-primary/50 transition-all duration-300 group-open:border-primary/50 group-open:bg-linear-to-br group-open:from-gray-700/40 group-open:to-gray-800/40">
                 <span>{faq.question}</span>
                 <ArrowRight className="ml-4 h-5 w-5 transition-transform duration-300 group-open:rotate-90" />
               </summary>
@@ -279,7 +279,7 @@ export function ServiceFAQ({ serviceSlug }: { serviceSlug: string }) {
               <p className="text-gray-300 mb-6">
                 Our care specialists are ready to discuss your specific needs and provide personalized guidance.
               </p>
-              <Button className="bg-linear-to-r from-emerald-500 to-teal-600 hover:shadow-2xl hover:shadow-emerald-500/30 hover:scale-105 transition-all duration-300 group">
+              <Button className="bg-primary hover:shadow-2xl hover:shadow-primary/30 hover:scale-105 transition-all duration-300 group">
                 Schedule a Free Consultation
                 <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </Button>
