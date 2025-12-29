@@ -106,11 +106,11 @@ export function Footer() {
               <Input 
                 type="email" 
                 placeholder="Your email" 
-                className="bg-gray-800/50 border-gray-700 text-gray-900 placeholder:text-gray-500 focus:border-primary"
+                className="bg-white border-gray-300 text-gray-900 placeholder:text-gray-500 focus:border-primary"
               />
               <Button 
                 size="sm"
-                className="bg-primary hover:shadow-lg hover:shadow-primary/20 transition-all duration-300"
+                className="bg-primary hover:shadow-lg hover:shadow-primary/20 transition-all duration-300 cursor-pointer"
               >
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />

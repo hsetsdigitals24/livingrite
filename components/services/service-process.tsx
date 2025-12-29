@@ -117,13 +117,13 @@ const serviceProcesses: Record<string, ServiceProcess[]> = {
   ],
 }
 
-export function ServiceProcess({ serviceSlug }: { serviceSlug: string }) {
-  const process = serviceProcesses[serviceSlug]
+export function ServiceProcess({ serviceType }: { serviceType: string }) {
+  const process = serviceProcesses[serviceType]
 
   if (!process) return null
 
   return (
-    <section className="py-20 lg:py-28 bg-linear-to-b from-slate-800/50 to-slate-900 relative overflow-hidden">
+    <section className="py-20 lg:py-28 bg-slate-900/70 relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute top-1/2 right-0 w-96 h-96 bg-primary rounded-full mix-blend-multiply filter blur-3xl"></div>
@@ -147,7 +147,7 @@ export function ServiceProcess({ serviceSlug }: { serviceSlug: string }) {
               <div className="flex gap-6">
                 {/* Step Indicator */}
                 <div className="flex flex-col items-center">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-linear-to-br from-primary to-accent text-white font-bold text-lg mb-4 shrink-0">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-accent text-white font-bold text-lg mb-4 shrink-0">
                     {stage.step}
                   </div>
                   {index < process.length - 1 && (
@@ -157,7 +157,7 @@ export function ServiceProcess({ serviceSlug }: { serviceSlug: string }) {
 
                 {/* Content */}
                 <div className="flex-1 pb-8">
-                  <Card className="border-gray-700/50 bg-linear-to-br from-gray-800/40 to-gray-900/40 backdrop-blur-sm hover:border-primary/50 transition-all duration-300 group">
+                  <Card className="border-gray-700/50 bg-gray-900/70 backdrop-blur-sm hover:border-primary/50 transition-all duration-300 group">
                     <CardContent className="p-6">
                       <h3 className="text-xl font-bold text-white mb-2 group-hover:text-primary/80 transition-colors">
                         {stage.title}

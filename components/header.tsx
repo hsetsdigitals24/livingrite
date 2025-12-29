@@ -1,40 +1,44 @@
-"use client"
+"use client";
 
-import Link from "next/link"
-import { Button } from "@/components/ui/button"
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
-import { Menu, X, ChevronDown } from "lucide-react"
-import { useState, useEffect } from "react"
-import logo from "@/public/logo.png"
-import Image from "next/image"
+} from "@/components/ui/dropdown-menu";
+import { Menu, X, ChevronDown } from "lucide-react";
+import { useState, useEffect } from "react";
+import logo from "@/public/logo.png";
+import Image from "next/image";
 
 export function Header() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const [isScrolled, setIsScrolled] = useState(false)
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50)
-    }
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+      setIsScrolled(window.scrollY > 50);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      isScrolled ? "bg-white/95 backdrop-blur-sm border-b border-gray-200" : "bg-transparent"
-    }`}>
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        isScrolled
+          ? "bg-white/95 backdrop-blur-sm border-b border-gray-200"
+          : "bg-transparent"
+      }`}
+    >
       <nav className="container mx-auto px-4 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 group">
             <div className="w-35 h-10 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-             <Image src={logo} alt="LivingRite Care Logo" />
+              <Image src={logo} alt="LivingRite Care Logo" />
             </div>
             {/* <span className="font-bold text-xl bg-primary bg-clip-text text-transparent">
               LivingRite<span className="text-primary">Care</span>
@@ -60,13 +64,17 @@ export function Header() {
                   <Link href="/post-icu-care">Post-ICU Care</Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
-                  <Link href="/physiotherapy-sessions">Physiotherapy Sessions</Link>
+                  <Link href="/physiotherapy-sessions">
+                    Physiotherapy Sessions
+                  </Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
                   <Link href="/live-in-nursing">Live-in Nursing</Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
-                  <Link href="/rehabilitation-support">Rehabilitation Support</Link>
+                  <Link href="/rehabilitation-support">
+                    Rehabilitation Support
+                  </Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
                   <Link href="/end-of-life-care">End-of-Life Care</Link>
@@ -80,34 +88,56 @@ export function Header() {
               </DropdownMenuContent>
             </DropdownMenu>
 
-            <Link href="#about" className="relative text-gray-700 hover:text-primary transition-colors font-medium group">
+            <Link
+              href="/about"
+              className="relative text-gray-700 hover:text-primary transition-colors font-medium group"
+            >
               About
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"></span>
             </Link>
-            <Link href="#testimonials" className="relative text-gray-700 hover:text-primary transition-colors font-medium group">
-              Testimonials
+            <Link
+              href="/blogs"
+              className="relative text-gray-700 hover:text-primary transition-colors font-medium group"
+            >
+              Blogs
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"></span>
             </Link>
-            <Link href="#resources" className="relative text-gray-700 hover:text-primary transition-colors font-medium group">
-              Resources
+            <Link
+              href="/faqs"
+              className="relative text-gray-700 hover:text-primary transition-colors font-medium group"
+            >
+              FAQs
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"></span>
             </Link>
           </div>
 
           {/* CTA Button */}
           <div className="hidden md:block">
-            <Button size="lg" className="font-semibold rounded-full bg-primary hover:shadow-lg hover:shadow-primary/20 hover:scale-105 transition-all duration-300">
-              Book Free Consultation
-            </Button>
+            <Link
+              target="_blank"
+              href="https://calendly.com/clientservices-livingritecare/30min"
+              className="flex items-center"
+            >
+              <Button
+                size="lg"
+                className="font-semibold rounded-full bg-primary hover:shadow-lg hover:shadow-primary/20 hover:scale-105 transition-all duration-300"
+              >
+                Book Free Consultation
+              </Button>
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
-          <button 
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)} 
-            className="md:hidden p-2 text-gray-700 hover:text-primary transition-colors" 
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="md:hidden p-2 text-gray-700 hover:text-primary transition-colors"
             aria-label="Toggle menu"
           >
-            {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            {mobileMenuOpen ? (
+              <X className="h-6 w-6" />
+            ) : (
+              <Menu className="h-6 w-6" />
+            )}
           </button>
         </div>
 
@@ -122,83 +152,109 @@ export function Header() {
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="start" className="w-48 ml-4">
                   <DropdownMenuItem asChild>
-                    <Link href="/services" onClick={() => setMobileMenuOpen(false)}>
+                    <Link
+                      href="/services"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
                       All Services
                     </Link>
                   </DropdownMenuItem>
                   <DropdownMenuItem asChild>
-                    <Link href="/post-stroke-care" onClick={() => setMobileMenuOpen(false)}>
+                    <Link
+                      href="/post-stroke-care"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
                       Post-Stroke Care
                     </Link>
                   </DropdownMenuItem>
                   <DropdownMenuItem asChild>
-                    <Link href="/post-icu-care" onClick={() => setMobileMenuOpen(false)}>
+                    <Link
+                      href="/post-icu-care"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
                       Post-ICU Care
                     </Link>
                   </DropdownMenuItem>
                   <DropdownMenuItem asChild>
-                    <Link href="/physiotherapy-sessions" onClick={() => setMobileMenuOpen(false)}>
+                    <Link
+                      href="/physiotherapy-sessions"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
                       Physiotherapy Sessions
                     </Link>
                   </DropdownMenuItem>
                   <DropdownMenuItem asChild>
-                    <Link href="/live-in-nursing" onClick={() => setMobileMenuOpen(false)}>
+                    <Link
+                      href="/live-in-nursing"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
                       Live-in Nursing
                     </Link>
                   </DropdownMenuItem>
                   <DropdownMenuItem asChild>
-                    <Link href="/rehabilitation-support" onClick={() => setMobileMenuOpen(false)}>
+                    <Link
+                      href="/rehabilitation-support"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
                       Rehabilitation Support
                     </Link>
                   </DropdownMenuItem>
                   <DropdownMenuItem asChild>
-                    <Link href="/end-of-life-care" onClick={() => setMobileMenuOpen(false)}>
+                    <Link
+                      href="/end-of-life-care"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
                       End-of-Life Care
                     </Link>
                   </DropdownMenuItem>
                   <DropdownMenuItem asChild>
-                    <Link href="/corporate-wellness" onClick={() => setMobileMenuOpen(false)}>
+                    <Link
+                      href="/corporate-wellness"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
                       Corporate Wellness
                     </Link>
                   </DropdownMenuItem>
                   <DropdownMenuItem asChild>
-                    <Link href="/family-support" onClick={() => setMobileMenuOpen(false)}>
+                    <Link
+                      href="/family-support"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
                       Family Support
                     </Link>
                   </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
               <Link
-                href="#about"
+                href="/about"
                 className="text-gray-700 hover:text-primary transition-colors font-medium py-2 px-4 rounded-lg hover:bg-primary/5"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 About
               </Link>
               <Link
-                href="#testimonials"
+                href="/blogs"
                 className="text-gray-700 hover:text-primary transition-colors font-medium py-2 px-4 rounded-lg hover:bg-primary/5"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                Testimonials
+                Blogs
               </Link>
-              <Link
-                href="#resources"
-                className="text-gray-700 hover:text-primary transition-colors font-medium py-2 px-4 rounded-lg hover:bg-primary/5"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                Resources
-              </Link>
-              <Button 
-                size="lg" 
+              <Button
+                size="lg"
                 className="w-full mt-2 rounded-full font-semibold bg-primary hover:scale-105 transition-transform duration-300"
               >
-                Book Free Consultation
+                <Link
+                  target="_blank"
+                  href="https://calendly.com/clientservices-livingritecare/30min"
+                  className="flex items-center"
+                >
+                  Book Free Consultation
+                </Link>
               </Button>
             </div>
           </div>
         )}
       </nav>
     </header>
-  )
+  );
 }

@@ -1,9 +1,7 @@
-import { Header } from "@/components/header"
-import { Footer } from "@/components/footer"
 import { RehabilitationHero } from "@/components/rehabilitation-support/rehabilitation-hero"
 import { RehabilitationFeatures } from "@/components/rehabilitation-support/rehabilitation-features"
 import { RehabilitationPrograms } from "@/components/rehabilitation-support/rehabilitation-programs"
-import { RehabilitationTestimonials } from "@/components/rehabilitation-support/rehabilitation-testimonials"
+// import { RehabilitationTestimonials } from "@/components/rehabilitation-support/rehabilitation-testimonials"
 import { ServiceProcess } from "@/components/services/service-process"
 import { ServiceFAQ } from "@/components/services/service-faq"
 import { CTABanner } from "@/components/cta-banner"
@@ -31,16 +29,14 @@ export const metadata = {
 
 export default function RehabilitationPage() {
   return (
-    <main className="min-h-screen">
-      <Header />
+    <main className="min-h-screen"> 
       <RehabilitationHero />
       <RehabilitationFeatures />
       <RehabilitationPrograms />
-      <RehabilitationTestimonials />
+      {/* <RehabilitationTestimonials /> */}
       <ServiceProcess serviceType="Rehabilitation Support" />
       <ServiceFAQ serviceType="Rehabilitation Support" />
-      <CTABanner />
-      <Footer />
+      <CTABanner /> 
     </main>
   )
 }

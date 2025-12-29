@@ -1,9 +1,6 @@
-import { Header } from "@/components/header"
-import { Footer } from "@/components/footer"
 import { CorporateWellnessHero } from "@/components/corporate-wellness/corporate-wellness-hero"
 import { CorporateWellnessFeatures } from "@/components/corporate-wellness/corporate-wellness-features"
-import { WellnessPrograms } from "@/components/corporate-wellness/wellness-programs"
-import { CorporateTestimonials } from "@/components/corporate-wellness/corporate-testimonials"
+import { WellnessPrograms } from "@/components/corporate-wellness/wellness-programs" 
 import { ServiceProcess } from "@/components/services/service-process"
 import { ServiceFAQ } from "@/components/services/service-faq"
 import { CTABanner } from "@/components/cta-banner"
@@ -31,16 +28,13 @@ export const metadata = {
 
 export default function CorporateWellnessPage() {
   return (
-    <main className="min-h-screen">
-      <Header />
+    <main className="min-h-screen"> 
       <CorporateWellnessHero />
       <CorporateWellnessFeatures />
-      <WellnessPrograms />
-      <CorporateTestimonials />
+      <WellnessPrograms /> 
       <ServiceProcess serviceType="Corporate Wellness" />
       <ServiceFAQ serviceType="Corporate Wellness" />
-      <CTABanner />
-      <Footer />
+      <CTABanner /> 
     </main>
   )
 }

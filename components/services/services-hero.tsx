@@ -1,52 +1,216 @@
-"use client"
+"use client";
 
-import { Button } from "@/components/ui/button"
-import { ArrowRight } from "lucide-react"
-import heroImage from '@/public/service-hero.jpg'
+import React, { useEffect, useRef, useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import heroImage from "@/public/service-hero.jpg";
+
+const services = [
+  {
+    id: "live-in-nursing",
+    title: "Live-In Nursing",
+    subtitle: "Comprehensive 24/7 nursing care in the comfort of your home",
+    href: "/live-in-nursing",
+  },
+  {
+    id: "post-icu",
+    title: "Post-ICU Care",
+    subtitle: "Transition support and monitoring after discharge",
+    href: "/post-icu-care",
+  },
+  {
+    id: "physio",
+    title: "Physiotherapy Sessions",
+    subtitle: "Targeted sessions to restore movement and strength",
+    href: "/physiotherapy-sessions",
+  },
+  {
+    id: "rehabilitation-support",
+    title: "Rehabilitation Support",
+    subtitle:
+      "Comprehensive rehabilitation programs for post-surgery and injury recovery.",
+    href: "/rehabilitation-support",
+  },
+  {
+    id: "post-stroke-care",
+    title: "Post-Stroke Care",
+    subtitle:
+      "Specialized recovery support with experienced nurses trained in stroke rehabilitation and physical therapy.",
+    href: "/post-stroke-care",
+  },
+  {
+    id: "family-support",
+    title: "Family Support",
+    subtitle: "Guidance and assistance for families caring for loved ones.",
+    href: "/family-support",
+  },
+  {
+    id: "end-of-life-care",
+    title: "End-of-Life Care",
+    subtitle:
+      "Compassionate care and support for patients and families during the final stages of life.",
+    href: "/end-of-life-care",
+  },
+  {
+    id: "corporate-wellness",
+    title: "Corporate Wellness",
+    subtitle: "Comprehensive wellness programs for businesses and employees.",
+    href: "/corporate-wellness",
+  },
+];
 
 export function ServicesHero() {
+  const [index, setIndex] = useState(0);
+  const [paused, setPaused] = useState(false);
+  const timeoutRef = useRef<number | null>(null);
+
+  useEffect(() => {
+    if (paused) return;
+    timeoutRef.current = window.setTimeout(() => {
+      setIndex((v) => (v + 1) % services.length);
+    }, 5000);
+    return () => {
+      if (timeoutRef.current) window.clearTimeout(timeoutRef.current);
+    };
+  }, [index, paused]);
+
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "ArrowLeft") prev();
+      if (e.key === "ArrowRight") next();
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  });
+
+  function prev() {
+    setIndex((v) => (v - 1 + services.length) % services.length);
+  }
+
+  function next() {
+    setIndex((v) => (v + 1) % services.length);
+  }
+
   return (
-    <section className="relative min-h-125 flex items-center pt-32 overflow-hidden bg-linear-to-br from-slate-900 via-primary/20 to-slate-900" style={{ backgroundImage: `url('${heroImage.src}')`, backgroundSize: 'cover', backgroundPosition: 'top' }}>
-      {/* Animated Background Blobs */}
-      <div className="absolute inset-0">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-primary rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
-        <div className="absolute top-40 right-10 w-72 h-72 bg-accent rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
-        <div className="absolute -bottom-8 left-20 w-72 h-72 bg-cyan-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
-      </div>
+    <section
+      className="relative overflow-hidden bg-slate-900/60 pt-28 pb-20"
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+    >
+      <Image
+        src={heroImage}
+        alt="Services background"
+        fill
+        className="object-cover object-top opacity-30 pointer-events-none"
+      />
 
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-black/40"></div>
-
-      <div className="container mx-auto px-4 lg:px-8 py-16 relative z-10">
-        <div className="max-w-4xl mx-auto text-center">
-          {/* Announcement Badge */}
-          <div className="inline-flex items-center gap-2 border border-primary/30 text-primary px-4 py-2 rounded-full text-sm font-medium mb-8 animate-slide-up animation-delay-200">
-            <span className="relative flex h-3 w-3">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-3 w-3 bg-primary"></span>
-            </span>
-            Specialized Healthcare Services
+      <div className="relative max-w-7xl mx-auto px-6">
+        <div className="flex items-center justify-between mb-8">
+          <div>
+            <h2 className="text-white text-3xl font-bold">Our Services</h2>
+            <p className="text-slate-200 mt-1 max-w-xl">
+              Expert home-based care across post-acute, rehabilitation and
+              ongoing support — tailored to each family's needs.
+            </p>
           </div>
- 
-          {/* Main Heading */}
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight animate-slide-up animation-delay-300">
-            Our <span className="bg-linear-to-r from-primary via-accent to-primary bg-clip-text text-transparent">Comprehensive Care</span> Services
-          </h1>
 
-          {/* Subheading */}
-          <p className="text-lg md:text-xl text-gray-300 mb-10 leading-relaxed max-w-3xl mx-auto animate-slide-up animation-delay-400">
-            Discover our full range of professional healthcare services designed to meet your loved ones' unique needs. From post-acute recovery to long-term support, we deliver exceptional care with compassion.
-          </p>
+          <div className="hidden sm:flex gap-3">
+            <button
+              aria-label="Previous service"
+              onClick={prev}
+              className="p-2 rounded-md bg-white/10 hover:bg-white/20 text-white"
+            >
+              <ChevronLeft className="w-5 h-5" />
+            </button>
+            <button
+              aria-label="Next service"
+              onClick={next}
+              className="p-2 rounded-md bg-white/10 hover:bg-white/20 text-white"
+            >
+              <ChevronRight className="w-5 h-5" />
+            </button>
+          </div>
+        </div>
 
-          {/* CTA Button */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center animate-slide-up animation-delay-500">
-            <Button size="lg" className="text-base font-semibold bg-primary hover:shadow-2xl hover:shadow-primary/30 hover:scale-105 transition-all duration-300 group">
-              Book Free Consultation
-              <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-            </Button>
+        <div className="relative">
+          <div className="overflow-hidden">
+            <div
+              className="flex transition-transform duration-500"
+              style={{ transform: `translateX(-${index * 100}%)` }}
+            >
+              {services.map((s) => (
+                <article key={s.id} className="min-w-full px-2 md:px-6 pb-8">
+                  <div className="bg-white/5 backdrop-blur-md rounded-2xl p-8 md:p-12 flex flex-col md:flex-row items-center gap-8">
+                    <div className="w-full md:w-1/2">
+                      <h3 className="text-2xl md:text-3xl font-semibold text-white">
+                        {s.title}
+                      </h3>
+                      <p className="mt-3 text-slate-200 max-w-xl">
+                        {s.subtitle}
+                      </p>
+
+                      <div className="mt-6 flex gap-4">
+                        <Link href={s.href} className="inline-block">
+                          <Button size="lg" className="bg-white text-slate-900">
+                            Learn more
+                          </Button>
+                        </Link>
+                        <Link
+                          href="https://calendly.com/clientservices-livingritecare/30min"
+                          target="_blank"
+                          rel="noreferrer"
+                          className="inline-block"
+                        >
+                          <Button
+                            size="lg"
+                            variant="outline"
+                            className="bg-accent text-white border-none"
+                          >
+                            Book consultation
+                          </Button>
+                        </Link>
+                      </div>
+                    </div>
+
+                    <div className="w-full md:w-1/2 flex items-center justify-center">
+                      <div className="w-full max-w-sm rounded-xl overflow-hidden shadow-2xl">
+                        <div
+                          className={`h-56 bg-gradient-to-br from-slate-500 to-slate-400 flex items-center justify-center text-white`}
+                        >
+                          <div className="text-center px-6">
+                            <div className="text-3xl font-bold">
+                              {s.title.split(" ")[0]}
+                            </div>
+                            <div className="text-sm opacity-90 mt-1">
+                              {s.subtitle}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+
+          {/* Indicators */}
+          <div className="mt-6 flex items-center justify-center gap-3">
+            {services.map((_, i) => (
+              <button
+                key={i}
+                aria-label={`Go to slide ${i + 1}`}
+                onClick={() => setIndex(i)}
+                className={`w-3 h-3 rounded-full ${
+                  i === index ? "bg-white" : "bg-white/30"
+                }`}
+              />
+            ))}
           </div>
         </div>
       </div>
     </section>
-  )
+  );
 }

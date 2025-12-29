@@ -1,9 +1,7 @@
-import { Header } from "@/components/header"
-import { Footer } from "@/components/footer"
 import { PostICUHero } from "@/components/post-icu/post-icu-hero"
 import { PostICUFeatures } from "@/components/post-icu/post-icu-features"
 import { TransitionCare } from "@/components/post-icu/transition-care"
-import { PostICUTestimonials } from "@/components/post-icu/post-icu-testimonials"
+// import { PostICUTestimonials } from "@/components/post-icu/post-icu-testimonials"
 import { ServiceProcess } from "@/components/services/service-process"
 import { ServiceFAQ } from "@/components/services/service-faq"
 import { CTABanner } from "@/components/cta-banner"
@@ -31,16 +29,14 @@ export const metadata = {
 
 export default function PostICUCarePage() {
 	return (
-		<main className="min-h-screen">
-			<Header />
+		<main className="min-h-screen"> 
 			<PostICUHero />
 			<PostICUFeatures />
 			<TransitionCare />
-			<PostICUTestimonials />
+			{/* <PostICUTestimonials /> */}
 			<ServiceProcess serviceType="Post-ICU Care" />
 			<ServiceFAQ serviceType="Post-ICU Care" />
-			<CTABanner />
-			<Footer />
+			<CTABanner /> 
 		</main>
 	)
 }

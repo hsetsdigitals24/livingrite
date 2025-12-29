@@ -41,7 +41,7 @@ export function RehabilitationPrograms() {
                 className="bg-white/10 backdrop-blur-sm border border-orange-500/20 rounded-lg p-6 hover:border-orange-500/50 transition-all duration-300 animate-slide-up"
                 style={{ animationDelay: `${index * 75}ms` }}
               >
-                <h3 className="text-lg font-semibold text-white mb-3">{program.title}</h3>
+                <h3 className="text-lg font-semibold text-primary mb-3">{program.title}</h3>
                 <p className="text-gray-300 leading-relaxed">{program.description}</p>
               </div>
             ))}

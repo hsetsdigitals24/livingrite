@@ -1,9 +1,7 @@
-import { Header } from "@/components/header"
-import { Footer } from "@/components/footer"
 import { LiveInNursingHero } from "@/components/live-in-nursing/live-in-nursing-hero"
 import { LiveInNursingFeatures } from "@/components/live-in-nursing/live-in-nursing-features"
 import { LiveInNursingBenefits } from "@/components/live-in-nursing/live-in-nursing-benefits"
-import { LiveInNursingTestimonials } from "@/components/live-in-nursing/live-in-nursing-testimonials"
+// import { LiveInNursingTestimonials } from "@/components/live-in-nursing/live-in-nursing-testimonials"
 import { ServiceProcess } from "@/components/services/service-process"
 import { ServiceFAQ } from "@/components/services/service-faq"
 import { CTABanner } from "@/components/cta-banner"
@@ -31,16 +29,14 @@ export const metadata = {
 
 export default function LiveInNursingPage() {
   return (
-    <main className="min-h-screen">
-      <Header />
+    <main className="min-h-screen"> 
       <LiveInNursingHero />
       <LiveInNursingFeatures />
       <LiveInNursingBenefits />
-      <LiveInNursingTestimonials />
+      {/* <LiveInNursingTestimonials /> */}
       <ServiceProcess serviceType="Live-in Nursing" />
       <ServiceFAQ serviceType="Live-in Nursing" />
-      <CTABanner />
-      <Footer />
+      <CTABanner /> 
     </main>
   )
 }

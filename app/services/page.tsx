@@ -1,5 +1,3 @@
-import { Header } from "@/components/header"
-import { Footer } from "@/components/footer"
 import { ServicesHero } from "@/components/services/services-hero"
 import { ServicesGrid } from "@/components/services/services-grid"
 import { CTABanner } from "@/components/cta-banner"
@@ -16,12 +14,10 @@ export const metadata = {
 
 export default function ServicesPage() {
   return (
-    <main className="min-h-screen">
-      <Header />
+    <main className="min-h-screen"> 
       <ServicesHero />
       <ServicesGrid />
-      <CTABanner />
-      <Footer />
+      <CTABanner /> 
     </main>
   )
 }

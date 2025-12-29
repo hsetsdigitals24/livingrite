@@ -1,8 +1,8 @@
-"use client"
+"use client";
 
-import Link from "next/link"
-import { Card, CardContent } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
+import Link from "next/link";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 import {
   Activity,
   Stethoscope,
@@ -16,17 +16,17 @@ import {
   Clock,
   Shield,
   Award,
-} from "lucide-react"
+} from "lucide-react";
 
 interface ServiceCardProps {
-  icon: React.ComponentType<{ className?: string }>
-  title: string
-  description: string
-  slug: string
-  color: string
-  iconColor: string
-  features?: string[]
-  index: number
+  icon: React.ComponentType<{ className?: string }>;
+  title: string;
+  description: string;
+  slug: string;
+  color: string;
+  iconColor: string;
+  features?: string[];
+  index: number;
 }
 
 const ServiceCard = ({
@@ -42,12 +42,14 @@ const ServiceCard = ({
   return (
     <Link href={`/services/${slug}`}>
       <Card
-        className="h-full border-gray-700/50 bg-gradient-to-br from-gray-800/40 to-gray-900/40 backdrop-blur-sm hover:border-primary/50 transition-all duration-300 hover:shadow-2xl hover:shadow-primary/20 hover:scale-105 cursor-pointer group animate-slide-up"
+        className="h-full border-gray-700/50 bg-gray-900/90 backdrop-blur-sm hover:border-primary/50 transition-all duration-300 hover:shadow-2xl hover:shadow-primary/20 hover:scale-105 cursor-pointer group animate-slide-up"
         style={{ animationDelay: `${index * 75}ms` }}
       >
         <CardContent className="p-8">
           {/* Icon */}
-          <div className={`inline-flex p-4 rounded-xl bg-gradient-to-br ${color} mb-6 group-hover:scale-110 transition-transform duration-300`}>
+          <div
+            className={`inline-flex p-4 rounded-xl bg-gradient-to-br ${color} mb-6 group-hover:scale-110 transition-transform duration-300`}
+          >
             <Icon className={`w-6 h-6 ${iconColor}`} />
           </div>
 
@@ -61,7 +63,10 @@ const ServiceCard = ({
           {features.length > 0 && (
             <div className="mb-6 space-y-2">
               {features.slice(0, 2).map((feature, idx) => (
-                <div key={idx} className="flex items-center gap-2 text-sm text-gray-400">
+                <div
+                  key={idx}
+                  className="flex items-center gap-2 text-sm text-gray-400"
+                >
                   <span className="w-1.5 h-1.5 rounded-full bg-primary/80"></span>
                   {feature}
                 </div>
@@ -77,34 +82,45 @@ const ServiceCard = ({
         </CardContent>
       </Card>
     </Link>
-  )
-}
+  );
+};
 
 const services: Array<ServiceCardProps & { features: string[] }> = [
   {
     icon: Activity,
     title: "Post-Stroke Care",
-    description: "Specialized recovery support with experienced nurses trained in stroke rehabilitation and physical therapy.",
+    description:
+      "Specialized recovery support with experienced nurses trained in stroke rehabilitation and physical therapy.",
     slug: "post-stroke-care",
     color: "from-blue-500/20 to-blue-500/10",
     iconColor: "text-blue-400",
-    features: ["24/7 Monitoring", "Rehabilitation Support", "Medication Management"],
+    features: [
+      "24/7 Monitoring",
+      "Rehabilitation Support",
+      "Medication Management",
+    ],
     index: 0,
   },
   {
     icon: Stethoscope,
     title: "Post-ICU Care",
-    description: "Intensive home monitoring for patients transitioning from ICU with 24/7 supervision and expert care.",
+    description:
+      "Intensive home monitoring for patients transitioning from ICU with 24/7 supervision and expert care.",
     slug: "post-icu-care",
     color: "from-primary/20 to-primary/10",
     iconColor: "text-primary/80",
-    features: ["Continuous Monitoring", "Vital Signs Tracking", "Emergency Support"],
+    features: [
+      "Continuous Monitoring",
+      "Vital Signs Tracking",
+      "Emergency Support",
+    ],
     index: 1,
   },
   {
     icon: HeartPulse,
     title: "Physiotherapy Sessions",
-    description: "Professional physical therapy at home to restore mobility, strength, and independence.",
+    description:
+      "Professional physical therapy at home to restore mobility, strength, and independence.",
     slug: "physiotherapy-sessions",
     color: "from-green-500/20 to-green-500/10",
     iconColor: "text-green-400",
@@ -114,7 +130,8 @@ const services: Array<ServiceCardProps & { features: string[] }> = [
   {
     icon: Heart,
     title: "End-of-Life Care",
-    description: "Compassionate palliative support focusing on comfort, dignity, and quality of life for patients and families.",
+    description:
+      "Compassionate palliative support focusing on comfort, dignity, and quality of life for patients and families.",
     slug: "end-of-life-care",
     color: "from-rose-500/20 to-rose-500/10",
     iconColor: "text-rose-400",
@@ -124,17 +141,23 @@ const services: Array<ServiceCardProps & { features: string[] }> = [
   {
     icon: Home,
     title: "Live-in Nursing",
-    description: "Round-the-clock professional nursing care with dedicated caregivers providing comprehensive in-home support.",
+    description:
+      "Round-the-clock professional nursing care with dedicated caregivers providing comprehensive in-home support.",
     slug: "live-in-nursing",
     color: "from-purple-500/20 to-purple-500/10",
     iconColor: "text-purple-400",
-    features: ["24/7 Availability", "Dedicated Caregiver", "Full Medical Support"],
+    features: [
+      "24/7 Availability",
+      "Dedicated Caregiver",
+      "Full Medical Support",
+    ],
     index: 4,
   },
   {
     icon: Zap,
     title: "Rehabilitation Support",
-    description: "Comprehensive rehab programs for post-surgery and injury recovery with personalized rehabilitation plans.",
+    description:
+      "Comprehensive rehab programs for post-surgery and injury recovery with personalized rehabilitation plans.",
     slug: "rehabilitation-support",
     color: "from-orange-500/20 to-orange-500/10",
     iconColor: "text-orange-400",
@@ -144,7 +167,8 @@ const services: Array<ServiceCardProps & { features: string[] }> = [
   {
     icon: Building2,
     title: "Corporate Wellness",
-    description: "Employee wellness programs and organizational health consultations tailored to your company's needs.",
+    description:
+      "Employee wellness programs and organizational health consultations tailored to your company's needs.",
     slug: "corporate-wellness",
     color: "from-indigo-500/20 to-indigo-500/10",
     iconColor: "text-indigo-400",
@@ -154,18 +178,19 @@ const services: Array<ServiceCardProps & { features: string[] }> = [
   {
     icon: Users,
     title: "Family Support",
-    description: "Respite care and counseling to help caregivers maintain their wellbeing while supporting their loved ones.",
+    description:
+      "Respite care and counseling to help caregivers maintain their wellbeing while supporting their loved ones.",
     slug: "family-support",
     color: "from-cyan-500/20 to-cyan-500/10",
     iconColor: "text-cyan-400",
     features: ["Caregiver Support", "Respite Care", "Counseling Services"],
     index: 7,
   },
-]
+];
 
 export function ServicesGrid() {
   return (
-    <section className="py-20 lg:py-28 bg-linear-to-b from-slate-900 via-slate-800/50 to-slate-900 relative overflow-hidden">
+    <section className="py-20 lg:py-28 bg-white text-slate-900 via-slate-800/50 to-slate-900 relative overflow-hidden">
       {/* Background Blobs */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-0 right-0 w-96 h-96 bg-primary rounded-full mix-blend-multiply filter blur-3xl"></div>
@@ -175,11 +200,13 @@ export function ServicesGrid() {
       <div className="container mx-auto px-4 lg:px-8 relative z-10">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 animate-slide-up animation-delay-200">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-accent mb-4 animate-slide-up animation-delay-200">
             Complete Care Solutions
           </h2>
-          <p className="text-lg text-gray-300 animate-slide-up animation-delay-300">
-            From acute recovery to long-term support, explore all our specialized healthcare services designed to provide comprehensive care for every need.
+          <p className="text-lg text-gray-900 animate-slide-up animation-delay-300">
+            From acute recovery to long-term support, explore all our
+            specialized healthcare services designed to provide comprehensive
+            care for every need.
           </p>
         </div>
 
@@ -193,11 +220,12 @@ export function ServicesGrid() {
         {/* Why Choose Us Section */}
         <div className="mt-20 pt-20 border-t border-gray-700/50">
           <div className="text-center max-w-3xl mx-auto mb-12">
-            <h3 className="text-3xl md:text-4xl font-bold text-white mb-4 animate-slide-up">
+            <h3 className="text-3xl text-primary  md:text-4xl font-bold mb-4 animate-slide-up">
               Why Choose Our Services?
             </h3>
-            <p className="text-lg text-gray-300 animate-slide-up animation-delay-200">
-              We combine expertise, compassion, and innovation to deliver the best care outcomes
+            <p className="text-lg text-gray-700 animate-slide-up animation-delay-200">
+              We combine expertise, compassion, and innovation to deliver the
+              best care outcomes
             </p>
           </div>
 
@@ -207,53 +235,64 @@ export function ServicesGrid() {
               {
                 icon: Clock,
                 title: "24/7 Availability",
-                description: "Round-the-clock care and support whenever you need us, day or night.",
+                description:
+                  "Round-the-clock care and support whenever you need us, day or night.",
               },
               {
                 icon: Shield,
                 title: "Certified Professionals",
-                description: "Hospital-trained nurses and therapists with verified credentials and experience.",
+                description:
+                  "Hospital-trained nurses and therapists with verified credentials and experience.",
               },
               {
                 icon: Award,
                 title: "Quality Assured",
-                description: "Evidence-based care practices with continuous monitoring and improvement.",
+                description:
+                  "Evidence-based care practices with continuous monitoring and improvement.",
               },
             ].map((benefit, idx) => {
-              const Icon = benefit.icon
+              const Icon = benefit.icon;
               return (
                 <div
                   key={idx}
                   className="group animate-slide-up"
                   style={{ animationDelay: `${idx * 100}ms` }}
                 >
-                  <div className="bg-gradient-to-br from-gray-800/40 to-gray-900/40 backdrop-blur-sm border border-gray-700/50 rounded-xl p-8 hover:border-primary/50 transition-all duration-300 hover:shadow-2xl hover:shadow-primary/20">
+                  <div className="bg-gray-900 backdrop-blur-sm border border-gray-700/50 rounded-xl p-8 hover:border-primary/50 transition-all duration-300 hover:shadow-2xl hover:shadow-primary/20">
                     <div className="inline-flex p-3 rounded-lg bg-primary/20 mb-6 group-hover:scale-110 transition-transform duration-300">
                       <Icon className="w-6 h-6 text-primary/80" />
                     </div>
-                    <h4 className="text-lg font-bold text-white mb-3">{benefit.title}</h4>
+                    <h4 className="text-lg font-bold text-white mb-3">
+                      {benefit.title}
+                    </h4>
                     <p className="text-gray-400">{benefit.description}</p>
                   </div>
                 </div>
-              )
+              );
             })}
           </div>
         </div>
 
         {/* Final CTA */}
         <div className="mt-20 text-center animate-slide-up animation-delay-500">
-          <p className="text-gray-300 mb-6">
+          <p className="text-gray-600 mb-6">
             Ready to experience compassionate, professional healthcare?
           </p>
           <Button
             size="lg"
             className="text-base font-semibold bg-primary hover:shadow-2xl hover:shadow-primary/30 hover:scale-105 transition-all duration-300 group"
           >
-            Book Your Free Consultation
-            <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+            <Link
+              target="_blank"
+              href="https://calendly.com/clientservices-livingritecare/30min"
+              className="flex items-center"
+            >
+              Book Your Free Consultation
+              <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+            </Link>
           </Button>
         </div>
       </div>
     </section>
-  )
+  );
 }

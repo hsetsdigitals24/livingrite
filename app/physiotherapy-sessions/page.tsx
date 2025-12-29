@@ -1,9 +1,7 @@
-import { Header } from "@/components/header"
-import { Footer } from "@/components/footer"
 import { PhysiotherapyHero } from "@/components/physiotherapy-sessions/physiotherapy-hero"
 import { PhysiotherapyFeatures } from "@/components/physiotherapy-sessions/physiotherapy-features"
 import { SessionTypes } from "@/components/physiotherapy-sessions/session-types"
-import { PhysiotherapyTestimonials } from "@/components/physiotherapy-sessions/physiotherapy-testimonials"
+// import { PhysiotherapyTestimonials } from "@/components/physiotherapy-sessions/physiotherapy-testimonials"
 import { ServiceProcess } from "@/components/services/service-process"
 import { ServiceFAQ } from "@/components/services/service-faq"
 import { CTABanner } from "@/components/cta-banner"
@@ -31,16 +29,14 @@ export const metadata = {
 
 export default function PhysiotherapySessionsPage() {
   return (
-    <main className="min-h-screen">
-      <Header />
+    <main className="min-h-screen"> 
       <PhysiotherapyHero />
       <PhysiotherapyFeatures />
       <SessionTypes />
-      <PhysiotherapyTestimonials />
+      {/* <PhysiotherapyTestimonials /> */}
       <ServiceProcess serviceType="Physiotherapy Sessions" />
       <ServiceFAQ serviceType="Physiotherapy Sessions" />
-      <CTABanner />
-      <Footer />
+      <CTABanner /> 
     </main>
   )
 }

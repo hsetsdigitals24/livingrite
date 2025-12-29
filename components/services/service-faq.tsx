@@ -1,12 +1,13 @@
-"use client"
+"use client";
 
-import { Card, CardContent } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { ArrowRight } from "lucide-react"
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { ArrowRight } from "lucide-react";
+import Link from "next/link";
 
 interface ServiceFAQItem {
-  question: string
-  answer: string
+  question: string;
+  answer: string;
 }
 
 const faqData: Record<string, ServiceFAQItem[]> = {
@@ -226,15 +227,15 @@ const faqData: Record<string, ServiceFAQItem[]> = {
         "Yes! We encourage family involvement and provide training on care procedures, emergency response, and techniques to help loved ones while supporting your own wellbeing.",
     },
   ],
-}
+};
 
-export function ServiceFAQ({ serviceSlug }: { serviceSlug: string }) {
-  const faqs = faqData[serviceSlug]
+export function ServiceFAQ({ serviceType }: { serviceType: string }) {
+  const faqs = faqData[serviceType];
 
-  if (!faqs) return null
+  if (!faqs) return null;
 
   return (
-    <section className="py-20 lg:py-28 bg-linear-to-b from-slate-900 via-slate-800/50 to-slate-900 relative overflow-hidden">
+    <section className="py-20 lg:py-28 bg-slate-900 relative overflow-hidden">
       {/* Background Blobs */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-0 right-0 w-96 h-96 bg-primary rounded-full mix-blend-multiply filter blur-3xl"></div>
@@ -248,7 +249,8 @@ export function ServiceFAQ({ serviceSlug }: { serviceSlug: string }) {
             Frequently Asked Questions
           </h2>
           <p className="text-lg text-gray-300 animate-slide-up animation-delay-200">
-            Find answers to common questions about our services and how we can help you.
+            Find answers to common questions about our services and how we can
+            help you.
           </p>
         </div>
 
@@ -273,20 +275,29 @@ export function ServiceFAQ({ serviceSlug }: { serviceSlug: string }) {
 
         {/* Still Have Questions */}
         <div className="mt-16 text-center animate-slide-up animation-delay-500">
-          <Card className="border-gray-700/50 bg-linear-to-br from-gray-800/40 to-gray-900/40 backdrop-blur-sm max-w-2xl mx-auto">
+          <Card className="border-gray-700/50 bg-white backdrop-blur-sm max-w-2xl mx-auto">
             <CardContent className="p-8">
-              <h3 className="text-2xl font-bold text-white mb-4">Still Have Questions?</h3>
-              <p className="text-gray-300 mb-6">
-                Our care specialists are ready to discuss your specific needs and provide personalized guidance.
+              <h3 className="text-2xl font-bold text-slate-900 mb-4">
+                Still Have Questions?
+              </h3>
+              <p className="text-gray-700 mb-6">
+                Our care specialists are ready to discuss your specific needs
+                and provide personalized guidance.
               </p>
-              <Button className="bg-primary hover:shadow-2xl hover:shadow-primary/30 hover:scale-105 transition-all duration-300 group">
-                Schedule a Free Consultation
-                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-              </Button>
+              <Link
+                target="_blank"
+                href="https://calendly.com/clientservices-livingritecare/30min"
+                className="flex items-center w-fit mx-auto"
+              >
+                <Button className="cursor-pointer bg-accent hover:shadow-2xl hover:shadow-primary/30 hover:scale-105 transition-all duration-300 group">
+                  Schedule a Free Consultation
+                  <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                </Button>
+              </Link>
             </CardContent>
           </Card>
         </div>
       </div>
     </section>
-  )
+  );
 }

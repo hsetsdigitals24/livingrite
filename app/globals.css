@@ -15,7 +15,7 @@
   --primary: #00adef;
   --primary-foreground: oklch(0.985 0 0);
   /* Secondary/Accent: Warm Orange (#F4A261) */
-  --secondary: oklch(0.97 0 0);
+  --secondary: #00EFB9;
   --secondary-foreground: oklch(0.205 0 0);
   /* Muted grays for backgrounds */
   --muted: oklch(0.97 0 0);

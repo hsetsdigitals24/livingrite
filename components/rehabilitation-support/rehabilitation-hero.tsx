@@ -1,11 +1,16 @@
-"use client"
+"use client";
 
-import { Button } from "@/components/ui/button"
-import { ArrowRight } from "lucide-react"
+import { Button } from "@/components/ui/button";
+import { ArrowRight } from "lucide-react";
+import heroImage from "@/public/service-hero.jpg";
+import Link from "next/link";
 
 export function RehabilitationHero() {
   return (
-    <section className="relative min-h-screen flex items-center pt-32 overflow-hidden bg-gradient-to-br from-accent/20 via-accent/10 to-slate-900">
+    <section
+      className="relative min-h-screen flex items-center pt-32 overflow-hidden bg-gradient-to-br from-accent/20 via-accent/10 to-slate-900 bg-cover bg-center"
+      style={{ backgroundImage: `url('${heroImage.src}')` }}
+    >
       {/* Animated Background Blobs */}
       <div className="absolute inset-0">
         <div className="absolute top-20 left-10 w-72 h-72 bg-accent rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
@@ -14,7 +19,7 @@ export function RehabilitationHero() {
       </div>
 
       {/* Overlay */}
-      <div className="absolute inset-0 bg-black/50"></div>
+      <div className="absolute inset-0 bg-white/80"></div>
 
       <div className="container mx-auto px-4 lg:px-8 py-16 relative z-10">
         <div className="max-w-4xl mx-auto text-center">
@@ -26,22 +31,33 @@ export function RehabilitationHero() {
             Personalized Recovery Programs
           </div>
 
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight animate-slide-up animation-delay-300">
-            Comprehensive <span className="bg-gradient-to-r from-accent via-primary to-accent bg-clip-text text-transparent">Rehabilitation</span> Support
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-700 mb-6 leading-tight animate-slide-up animation-delay-300">
+            Comprehensive{" "}
+            <span className="bg-gradient-to-r from-accent via-primary to-accent bg-clip-text text-transparent">
+              Rehabilitation
+            </span>{" "}
+            Support
           </h1>
 
-          <p className="text-lg md:text-xl text-gray-300 mb-10 leading-relaxed max-w-3xl mx-auto animate-slide-up animation-delay-400">
-            Tailored rehabilitation programs for post-surgery and injury recovery. Expert therapists work with you to restore function and independence.
+          <p className="text-lg md:text-xl text-gray-500 mb-10 leading-relaxed max-w-3xl mx-auto animate-slide-up animation-delay-400">
+            Tailored rehabilitation programs for post-surgery and injury
+            recovery. Expert therapists work with you to restore function and
+            independence.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center animate-slide-up animation-delay-500">
-            <Button size="lg" className="text-base font-semibold bg-accent hover:shadow-2xl hover:shadow-accent/30 hover:scale-105 transition-all duration-300 group">
-              Start Recovery Journey
-              <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-            </Button>
+            <Link href="https://calendly.com/clientservices-livingritecare/30min" target="_blank" rel="noreferrer" className="inline-block">
+              <Button
+                size="lg"
+                className="text-base font-semibold bg-accent hover:shadow-2xl hover:shadow-accent/30 hover:scale-105 transition-all duration-300 group"
+              >
+                Start Recovery Journey
+                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+              </Button>
+            </Link>
           </div>
         </div>
       </div>
     </section>
-  )
+  );
 }

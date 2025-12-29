@@ -1,23 +1,19 @@
-import { Header } from "@/components/header"
 import { HeroSection } from "@/components/hero-section"
 import { TrustIndicators } from "@/components/trust-indicators"
 import { ServicesSection } from "@/components/services-section"
 import { AboutSection } from "@/components/about-section"
 import { TestimonialsSection } from "@/components/testimonials-section"
 import { CTABanner } from "@/components/cta-banner"
-import { Footer } from "@/components/footer"
 
 export default function HomePage() {
   return (
-    <main className="min-h-screen">
-      <Header />
+    <main className="min-h-screen"> 
       <HeroSection />
       <TrustIndicators />
       <ServicesSection />
       <AboutSection />
       <TestimonialsSection />
-      <CTABanner />
-      <Footer />
+      <CTABanner /> 
     </main>
   )
 }

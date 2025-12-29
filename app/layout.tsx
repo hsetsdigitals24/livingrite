@@ -3,6 +3,8 @@ import type { Metadata } from "next"
 import { Inter, Poppins } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import "./globals.css"
+import { Header } from "@/components/header"
+import { Footer } from "@/components/footer"
 
 const inter = Inter({
   subsets: ["latin"],
@@ -32,13 +34,12 @@ export const metadata: Metadata = {
         media: "(prefers-color-scheme: dark)",
       },
       {
-        url: "/icon.svg",
-        type: "image/svg+xml",
+        url: "/icon.png",
+        type: "image/png",
       },
     ],
     apple: "/apple-icon.png",
-  },
-    generator: 'v0.app'
+  }
 }
 
 export default function RootLayout({
@@ -49,7 +50,9 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${poppins.variable}`}>
       <body className={`font-sans antialiased`}>
-        {children}
+        <Header />
+        <main className="pt-20">{children}</main>
+        <Footer />
         <Analytics />
       </body>
     </html>

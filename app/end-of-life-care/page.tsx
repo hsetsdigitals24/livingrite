@@ -1,9 +1,7 @@
-import { Header } from "@/components/header"
-import { Footer } from "@/components/footer"
 import { EndOfLifeHero } from "@/components/end-of-life-care/end-of-life-hero"
 import { EndOfLifeFeatures } from "@/components/end-of-life-care/end-of-life-features"
 import { CompassionateCare } from "@/components/end-of-life-care/compassionate-care"
-import { EndOfLifeTestimonials } from "@/components/end-of-life-care/end-of-life-testimonials"
+// import { EndOfLifeTestimonials } from "@/components/end-of-life-care/end-of-life-testimonials"
 import { ServiceProcess } from "@/components/services/service-process"
 import { ServiceFAQ } from "@/components/services/service-faq"
 import { CTABanner } from "@/components/cta-banner"
@@ -32,15 +30,13 @@ export const metadata = {
 export default function EndOfLifeCarePage() {
   return (
     <main className="min-h-screen">
-      <Header />
       <EndOfLifeHero />
       <EndOfLifeFeatures />
       <CompassionateCare />
-      <EndOfLifeTestimonials />
+      {/* <EndOfLifeTestimonials /> */}
       <ServiceProcess serviceType="End-of-Life Care" />
       <ServiceFAQ serviceType="End-of-Life Care" />
-      <CTABanner />
-      <Footer />
+      <CTABanner /> 
     </main>
   )
 }

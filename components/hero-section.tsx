@@ -1,5 +1,6 @@
-import { Button } from "@/components/ui/button"
-import { ArrowRight, Play } from "lucide-react"
+import { Button } from "@/components/ui/button";
+import { ArrowRight, Play } from "lucide-react";
+import Link from "next/link";
 
 export function HeroSection() {
   return (
@@ -26,24 +27,50 @@ export function HeroSection() {
 
             {/* Main Heading */}
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight animate-slide-up animation-delay-300">
-              Expert Post-Hospital Care in the <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">Comfort of Home</span>
+              Expert Post-Hospital Care in the{" "}
+              <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">
+                Comfort of Home
+              </span>
             </h1>
 
             {/* Subheading */}
             <p className="text-lg md:text-xl text-gray-700 mb-10 leading-relaxed max-w-2xl animate-slide-up animation-delay-400">
-              Professional home healthcare services for post-stroke recovery, ICU care, physiotherapy, and palliative support. Hospital-trained nurses delivering compassionate care for your loved ones.
+              Professional home healthcare services for post-stroke recovery,
+              ICU care, physiotherapy, and palliative support. Hospital-trained
+              nurses delivering compassionate care for your loved ones.
             </p>
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 mb-12 animate-slide-up animation-delay-500">
-              <Button size="lg" className="text-base font-semibold bg-primary hover:shadow-2xl hover:shadow-primary/30 hover:scale-105 transition-all duration-300 group">
-                Book Free Consultation
+              <Button
+                size="lg"
+                className="text-base font-semibold bg-primary hover:shadow-2xl hover:shadow-primary/30 hover:scale-105 transition-all duration-300 group"
+              >
+                <Link
+                  target="_blank"
+                  href="https://calendly.com/clientservices-livingritecare/30min"
+                  className="flex items-center"
+                >
+                  Book Free Consultation
+                </Link>
                 <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </Button>
-              <Button size="lg" variant="outline" className="text-base font-semibold border-2 border-gray-300 text-gray-800 hover:bg-gray-100 backdrop-blur-sm transition-all duration-300">
-                <svg className="mr-2 h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
+              <Button
+                size="lg"
+                variant="outline"
+                className="text-base font-semibold border-2 border-gray-300 text-gray-800 hover:bg-gray-100 backdrop-blur-sm transition-all duration-300"
+              >
+                <svg
+                  className="mr-2 h-5 w-5"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
                   <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
-                  <path fillRule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clipRule="evenodd" />
+                  <path
+                    fillRule="evenodd"
+                    d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z"
+                    clipRule="evenodd"
+                  />
                 </svg>
                 Learn More
               </Button>
@@ -72,20 +99,29 @@ export function HeroSection() {
             <div className="relative w-full max-w-md">
               <div className="aspect-video rounded-2xl bg-gradient-to-br from-primary/30 to-accent/30 backdrop-blur-sm border border-white/10 overflow-hidden shadow-2xl">
                 <div className="w-full h-full flex items-center justify-center bg-slate-800">
-                  <Button size="lg" className="rounded-full w-16 h-16 p-0 bg-primary hover:bg-primary/90 hover:scale-110 transition-all duration-300 shadow-2xl shadow-primary/50">
+                  <Button
+                    size="lg"
+                    className="rounded-full w-16 h-16 p-0 bg-primary hover:bg-primary/90 hover:scale-110 transition-all duration-300 shadow-2xl shadow-primary/50"
+                  >
                     <Play className="h-6 w-6 fill-white" />
                   </Button>
                 </div>
               </div>
-              
+
               {/* Floating Elements */}
               <div className="absolute -top-8 -left-8 bg-white/10 backdrop-blur-md border border-white/20 rounded-xl p-4 shadow-xl animate-float">
-                <div className="text-sm font-semibold text-white">Expert Care</div>
-                <div className="text-xs text-gray-300">Hospital-trained staff</div>
+                <div className="text-sm font-semibold text-white">
+                  Expert Care
+                </div>
+                <div className="text-xs text-gray-300">
+                  Hospital-trained staff
+                </div>
               </div>
-              
+
               <div className="absolute -bottom-8 -right-8 bg-white/10 backdrop-blur-md border border-white/20 rounded-xl p-4 shadow-xl animate-float animation-delay-200">
-                <div className="text-sm font-semibold text-white">Available 24/7</div>
+                <div className="text-sm font-semibold text-white">
+                  Available 24/7
+                </div>
                 <div className="text-xs text-gray-300">Always here for you</div>
               </div>
             </div>
@@ -103,5 +139,5 @@ export function HeroSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }

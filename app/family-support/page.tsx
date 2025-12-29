@@ -1,9 +1,7 @@
-import { Header } from "@/components/header"
-import { Footer } from "@/components/footer"
 import { FamilySupportHero } from "@/components/family-support/family-support-hero"
 import { FamilySupportFeatures } from "@/components/family-support/family-support-features"
 import { SupportServices } from "@/components/family-support/support-services"
-import { FamilySupportTestimonials } from "@/components/family-support/family-support-testimonials"
+// import { FamilySupportTestimonials } from "@/components/family-support/family-support-testimonials"
 import { ServiceProcess } from "@/components/services/service-process"
 import { ServiceFAQ } from "@/components/services/service-faq"
 import { CTABanner } from "@/components/cta-banner"
@@ -31,16 +29,14 @@ export const metadata = {
 
 export default function FamilySupportPage() {
   return (
-    <main className="min-h-screen">
-      <Header />
+    <main className="min-h-screen"> 
       <FamilySupportHero />
       <FamilySupportFeatures />
       <SupportServices />
-      <FamilySupportTestimonials />
+      {/* <FamilySupportTestimonials /> */}
       <ServiceProcess serviceType="Family Support" />
       <ServiceFAQ serviceType="Family Support" />
       <CTABanner />
-      <Footer />
     </main>
   )
 }
