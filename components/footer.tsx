@@ -57,15 +57,15 @@ export function Footer() {
             <div className="space-y-3 text-sm">
               <div className="flex items-start gap-3">
                 <MapPin className="h-5 w-5 shrink-0 mt-0.5 text-primary" />
-                <span className="text-gray-900">123 Victoria Island, Lagos, Nigeria</span>
-              </div>
-              <div className="flex items-center gap-3">
+                <span className="text-gray-900">60/64 Allen Avenue First Bank Bus Stop, Allen Ikeja, Lagos, Nigeria</span>
+              </div> 
+                <div className="flex items-center gap-3">
                 <Phone className="h-5 w-5 shrink-0 text-primary" />
-                <span className="text-gray900">+234 XXX XXXX XXX</span>
+                <span className="text-gray-900">+234 810 683 4519</span>
               </div>
               <div className="flex items-center gap-3">
                 <Mail className="h-5 w-5 shrink-0 text-primary" />
-                <span className="text-gray-900">info@livingritecare.ng</span>
+                <span className="text-gray-900">livingritecare@gmail.com</span>
               </div>
             </div>
           </div>

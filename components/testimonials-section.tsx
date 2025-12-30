@@ -2,38 +2,111 @@
 
 import { Card, CardContent } from "@/components/ui/card"
 import { Star, ChevronLeft, ChevronRight } from "lucide-react"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
+import type { Testimonial } from "@/lib/testimonials"
+import { getTestimonials, getTestimonialImage } from "@/lib/testimonials"
 
-const testimonials = [
-  {
-    name: "Chioma Okafor",
-    role: "Daughter of Post-Stroke Patient",
-    location: "Lagos, Nigeria",
-    image: "/african-woman-professional-headshot.png",
-    rating: 5,
-    text: "LivingRite Care transformed my mother's recovery journey. The nurses are skilled and genuinely caring. Daily updates gave our family peace of mind.",
-  },
-  {
-    name: "Emeka Nwosu",
-    role: "Son arranging care from UK",
-    location: "London, United Kingdom",
-    image: "/african-man-professional-headshot.png",
-    rating: 5,
-    text: "Finding trustworthy care from abroad was hard — LivingRite made it seamless with clear communication and thoughtful updates.",
-  },
-  {
-    name: "Dr. Adebayo Johnson",
-    role: "Medical Consultant",
-    location: "Abuja, Nigeria",
-    image: "/african-doctor-professional-headshot.jpg",
-    rating: 5,
-    text: "I refer patients to LivingRite for post-ICU support. Their team follows protocols and delivers reliable, high-quality home care.",
-  },
-]
+interface TestimonialDisplay extends Testimonial {
+  displayName: string
+  displayRole: string
+  imageUrl: string
+  rating: number
+}
 
 export function TestimonialsSection() {
+  const [testimonials, setTestimonials] = useState<TestimonialDisplay[]>([])
+  const [isLoading, setIsLoading] = useState(true)
   const [activeIndex, setActiveIndex] = useState(0)
+
+  useEffect(() => {
+    async function loadTestimonials() {
+      setIsLoading(true)
+      try {
+        const sanityTestimonials = await getTestimonials()
+        
+        // Transform Sanity testimonials to display format with fallback testimonials
+        const displayTestimonials: TestimonialDisplay[] = sanityTestimonials.length > 0
+          ? sanityTestimonials.map((t) => ({
+              ...t,
+              displayName: t.fullName,
+              displayRole: t.patientRelation,
+              imageUrl: getTestimonialImage(t),
+              rating: 5,
+            }))
+          : [
+              {
+                _id: "1",
+                fullName: "Chioma Okafor",
+                patientRelation: "Daughter of Post-Stroke Patient",
+                location: "Lagos, Nigeria",
+                image: { asset: { _id: "" } },
+                testimonial: "LivingRite Care transformed my mother's recovery journey. The nurses are skilled and genuinely caring. Daily updates gave our family peace of mind.",
+                displayName: "Chioma Okafor",
+                displayRole: "Daughter of Post-Stroke Patient",
+                imageUrl: "/african-woman-professional-headshot.png",
+                rating: 5,
+              },
+              {
+                _id: "2",
+                fullName: "Emeka Nwosu",
+                patientRelation: "Son arranging care from UK",
+                location: "London, United Kingdom",
+                image: { asset: { _id: "" } },
+                testimonial: "Finding trustworthy care from abroad was hard — LivingRite made it seamless with clear communication and thoughtful updates.",
+                displayName: "Emeka Nwosu",
+                displayRole: "Son arranging care from UK",
+                imageUrl: "/african-man-professional-headshot.png",
+                rating: 5,
+              },
+              {
+                _id: "3",
+                fullName: "Dr. Adebayo Johnson",
+                patientRelation: "Medical Consultant",
+                location: "Abuja, Nigeria",
+                image: { asset: { _id: "" } },
+                testimonial: "I refer patients to LivingRite for post-ICU support. Their team follows protocols and delivers reliable, high-quality home care.",
+                displayName: "Dr. Adebayo Johnson",
+                displayRole: "Medical Consultant",
+                imageUrl: "/african-doctor-professional-headshot.jpg",
+                rating: 5,
+              },
+            ]
+        
+        setTestimonials(displayTestimonials)
+      } catch (error) {
+        console.error("Error loading testimonials:", error)
+      } finally {
+        setIsLoading(false)
+      }
+    }
+
+    loadTestimonials()
+  }, [])
+
+  if (isLoading) {
+    return (
+      <section className="py-16 bg-gradient-to-b from-white to-gray-50">
+        <div className="container mx-auto px-4">
+          <div className="text-center max-w-3xl mx-auto">
+            <p className="text-gray-600">Loading testimonials...</p>
+          </div>
+        </div>
+      </section>
+    )
+  }
+
+  if (testimonials.length === 0) {
+    return (
+      <section className="py-16 bg-gradient-to-b from-white to-gray-50">
+        <div className="container mx-auto px-4">
+          <div className="text-center max-w-3xl mx-auto">
+            <p className="text-gray-600">No testimonials available</p>
+          </div>
+        </div>
+      </section>
+    )
+  }
   const current = testimonials[activeIndex]
 
   return (
@@ -54,17 +127,17 @@ export function TestimonialsSection() {
                 <div className="md:flex-1">
                   <div className="flex items-center gap-4 mb-4">
                     <img
-                      src={current.image || "/placeholder.svg"}
-                      alt={current.name}
+                      src={current.imageUrl || "/placeholder.svg"}
+                      alt={current.displayName}
                       className="w-14 h-14 rounded-full object-cover border-2 border-primary/30"
                     />
                     <div>
-                      <div className="font-semibold text-gray-900">{current.name}</div>
-                      <div className="text-sm text-gray-500">{current.role} • {current.location}</div>
+                      <div className="font-semibold text-gray-900">{current.displayName}</div>
+                      <div className="text-sm text-gray-500">{current.displayRole} • {current.location}</div>
                     </div>
                   </div>
 
-                  <p className="text-gray-800 italic text-base">"{current.text}"</p>
+                  <p className="text-gray-800 italic text-base">"{current.testimonial}"</p>
 
                   <div className="flex items-center gap-1 mt-4">
                     {Array.from({ length: current.rating }).map((_, i) => (
@@ -102,7 +175,7 @@ export function TestimonialsSection() {
                         }`}
                         aria-label={`Show testimonial ${idx + 1}`}
                       >
-                        <img src={t.image} alt={t.name} className="w-full h-full object-cover" />
+                        <img src={t.imageUrl} alt={t.fullName} className="w-full h-full object-cover" />
                       </button>
                     ))}
                   </div>

@@ -1,21 +1,11 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Inter, Poppins } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import "./globals.css"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-})
-
-const poppins = Poppins({
-  subsets: ["latin"],
-  weight: ["400", "600", "700"],
-  variable: "--font-poppins",
-})
+// Using system/local fallbacks for fonts to avoid remote Google font fetches
 
 export const metadata: Metadata = {
   title: "LivingRite Care - Expert Home Healthcare in Nigeria",
@@ -48,7 +38,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${poppins.variable}`}>
+    <html lang="en">
       <body className={`font-sans antialiased`}>
         <Header />
         <main className="pt-20">{children}</main>

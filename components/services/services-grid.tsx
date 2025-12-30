@@ -9,9 +9,12 @@ import {
   HeartPulse,
   Heart,
   Home,
-  Zap,
-  Building2,
-  Users,
+  Brain,
+  // Scalpel,
+  Beaker,
+  Bandage,
+  Baby,
+  Phone,
   ArrowRight,
   Clock,
   Shield,
@@ -87,17 +90,17 @@ const ServiceCard = ({
 
 const services: Array<ServiceCardProps & { features: string[] }> = [
   {
-    icon: Activity,
-    title: "Post-Stroke Care",
+    icon: Brain,
+    title: "Neurorehabilitation Care",
     description:
-      "Specialized recovery support with experienced nurses trained in stroke rehabilitation and physical therapy.",
-    slug: "post-stroke-care",
-    color: "from-blue-500/20 to-blue-500/10",
-    iconColor: "text-blue-400",
+      "Specialized care for stroke, brain injury, and neurological conditions with multidisciplinary team support.",
+    slug: "neurorehabilitation",
+    color: "from-purple-500/20 to-purple-500/10",
+    iconColor: "text-purple-400",
     features: [
+      "Neurocritical Specialists",
+      "Physiotherapy & Speech Therapy",
       "24/7 Monitoring",
-      "Rehabilitation Support",
-      "Medication Management",
     ],
     index: 0,
   },
@@ -118,18 +121,22 @@ const services: Array<ServiceCardProps & { features: string[] }> = [
   },
   {
     icon: HeartPulse,
-    title: "Physiotherapy Sessions",
+    title: "Post-Surgical Care",
     description:
-      "Professional physical therapy at home to restore mobility, strength, and independence.",
-    slug: "physiotherapy-sessions",
-    color: "from-green-500/20 to-green-500/10",
-    iconColor: "text-green-400",
-    features: ["Customized Programs", "Progress Tracking", "In-Home Therapy"],
+      "Professional post-surgical recovery support with doctors, nurses, and physiotherapists.",
+    slug: "post-surgical-care",
+    color: "from-blue-500/20 to-blue-500/10",
+    iconColor: "text-blue-400",
+    features: [
+      "Wound Care Management",
+      "Pain Management",
+      "Recovery Monitoring",
+    ],
     index: 2,
   },
   {
     icon: Heart,
-    title: "End-of-Life Care",
+    title: "End-of-Life & Palliative Care",
     description:
       "Compassionate palliative support focusing on comfort, dignity, and quality of life for patients and families.",
     slug: "end-of-life-care",
@@ -139,52 +146,90 @@ const services: Array<ServiceCardProps & { features: string[] }> = [
     index: 3,
   },
   {
-    icon: Home,
-    title: "Live-in Nursing",
+    icon: Activity,
+    title: "Geriatric Care",
     description:
-      "Round-the-clock professional nursing care with dedicated caregivers providing comprehensive in-home support.",
-    slug: "live-in-nursing",
-    color: "from-purple-500/20 to-purple-500/10",
-    iconColor: "text-purple-400",
+      "Professional elderly care with doctors and trained caregivers specialized in seniors' healthcare.",
+    slug: "geriatric-care",
+    color: "from-green-500/20 to-green-500/10",
+    iconColor: "text-green-400",
     features: [
-      "24/7 Availability",
-      "Dedicated Caregiver",
-      "Full Medical Support",
+      "Chronic Disease Management",
+      "Fall Prevention",
+      "Daily Living Support",
     ],
     index: 4,
   },
   {
-    icon: Zap,
-    title: "Rehabilitation Support",
+    icon: Bandage,
+    title: "Chronic Wound Care",
     description:
-      "Comprehensive rehab programs for post-surgery and injury recovery with personalized rehabilitation plans.",
-    slug: "rehabilitation-support",
+      "Expert chronic wound management and treatment at home with professional care.",
+    slug: "chronic-wound-care",
     color: "from-orange-500/20 to-orange-500/10",
     iconColor: "text-orange-400",
-    features: ["Recovery Plans", "Progress Monitoring", "Therapy Sessions"],
+    features: [
+      "Advanced Dressings",
+      "Infection Prevention",
+      "Progress Monitoring",
+    ],
     index: 5,
   },
   {
-    icon: Building2,
-    title: "Corporate Wellness",
+    icon: Home,
+    title: "Home Medical Consultations",
     description:
-      "Employee wellness programs and organizational health consultations tailored to your company's needs.",
-    slug: "corporate-wellness",
+      "Convenient doctor consultations in the comfort of your home with professional medical advice.",
+    slug: "home-medical-consultations",
     color: "from-indigo-500/20 to-indigo-500/10",
     iconColor: "text-indigo-400",
-    features: ["Wellness Programs", "Health Consultations", "Team Training"],
+    features: [
+      "Doctor House Visits",
+      "Health Assessments",
+      "Quick Response",
+    ],
     index: 6,
   },
   {
-    icon: Users,
-    title: "Family Support",
+    icon: Beaker,
+    title: "Routine Laboratory Services",
     description:
-      "Respite care and counseling to help caregivers maintain their wellbeing while supporting their loved ones.",
-    slug: "family-support",
+      "Professional laboratory blood tests and diagnostic services conducted at home.",
+    slug: "routine-laboratory-services",
     color: "from-cyan-500/20 to-cyan-500/10",
     iconColor: "text-cyan-400",
-    features: ["Caregiver Support", "Respite Care", "Counseling Services"],
+    features: [
+      "Home Blood Tests",
+      "Quick Results",
+      "Wide Test Range",
+    ],
     index: 7,
+  },
+  {
+    icon: HeartPulse,
+    title: "Physiotherapy Services",
+    description:
+      "Professional physical therapy at home to restore mobility, strength, and independence.",
+    slug: "physiotherapy-services",
+    color: "from-emerald-500/20 to-emerald-500/10",
+    iconColor: "text-emerald-400",
+    features: ["Customized Programs", "Progress Tracking", "In-Home Therapy"],
+    index: 8,
+  },
+  {
+    icon: Baby,
+    title: "Postpartum Care",
+    description:
+      "Comprehensive postpartum support for new mothers with professional guidance and care.",
+    slug: "postpartum-care",
+    color: "from-pink-500/20 to-pink-500/10",
+    iconColor: "text-pink-400",
+    features: [
+      "Recovery Monitoring",
+      "Lactation Support",
+      "Newborn Care Guidance",
+    ],
+    index: 9,
   },
 ];
 
@@ -210,11 +255,17 @@ export function ServicesGrid() {
           </p>
         </div>
 
+
         {/* Services Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
           {services.map((service) => (
             <ServiceCard key={service.slug} {...service} />
           ))}
+        </div>
+
+        {/* Care Packages and Service Tiers */}
+        <div className="mt-20"> 
+          {require("./care-packages-section").CarePackagesSection()}
         </div>
 
         {/* Why Choose Us Section */}
@@ -278,19 +329,19 @@ export function ServicesGrid() {
           <p className="text-gray-600 mb-6">
             Ready to experience compassionate, professional healthcare?
           </p>
-          <Button
-            size="lg"
-            className="text-base font-semibold bg-primary hover:shadow-2xl hover:shadow-primary/30 hover:scale-105 transition-all duration-300 group"
+          <Link
+            target="_blank"
+            href="https://calendly.com/clientservices-livingritecare/30min"
+            className="flex items-center"
           >
-            <Link
-              target="_blank"
-              href="https://calendly.com/clientservices-livingritecare/30min"
-              className="flex items-center"
+            <Button
+              size="lg"
+              className="text-base font-semibold bg-primary hover:shadow-2xl hover:shadow-primary/30 hover:scale-105 transition-all duration-300 group"
             >
               Book Your Free Consultation
               <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-            </Link>
-          </Button>
+            </Button>
+          </Link>
         </div>
       </div>
     </section>

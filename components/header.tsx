@@ -57,33 +57,35 @@ export function Header() {
                 <DropdownMenuItem asChild>
                   <Link href="/services">All Services</Link>
                 </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link href="/post-stroke-care">Post-Stroke Care</Link>
+                  <DropdownMenuItem asChild>
+                  <Link href="/services/neurorehabilitation">Neurorehabilitation Care</Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
-                  <Link href="/post-icu-care">Post-ICU Care</Link>
+                  <Link href="/services/post-icu-care">Post-ICU Care</Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
-                  <Link href="/physiotherapy-sessions">
-                    Physiotherapy Sessions
-                  </Link>
+                  <Link href="/services/post-surgical-care">Post-Surgical Care</Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
-                  <Link href="/live-in-nursing">Live-in Nursing</Link>
+                  <Link href="/services/end-of-life-care">End-of-Life & Palliative Care</Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
-                  <Link href="/rehabilitation-support">
-                    Rehabilitation Support
-                  </Link>
+                  <Link href="/services/geriatric-care">Geriatric Care</Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
-                  <Link href="/end-of-life-care">End-of-Life Care</Link>
+                  <Link href="/services/chronic-wound-care">Chronic Wound Care</Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
-                  <Link href="/corporate-wellness">Corporate Wellness</Link>
+                  <Link href="/services/home-medical-consultations">Home Medical Consultations</Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
-                  <Link href="/family-support">Family Support</Link>
+                  <Link href="/services/routine-laboratory-services">Routine Laboratory Services</Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link href="/services/physiotherapy-services">Physiotherapy Services</Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link href="/services/postpartum-care">Postpartum Care</Link>
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
@@ -153,23 +155,15 @@ export function Header() {
                 <DropdownMenuContent align="start" className="w-48 ml-4">
                   <DropdownMenuItem asChild>
                     <Link
-                      href="/services"
+                      href="/services/neurorehabilitation"
                       onClick={() => setMobileMenuOpen(false)}
                     >
-                      All Services
+                      Neurorehabilitation Care
                     </Link>
                   </DropdownMenuItem>
                   <DropdownMenuItem asChild>
                     <Link
-                      href="/post-stroke-care"
-                      onClick={() => setMobileMenuOpen(false)}
-                    >
-                      Post-Stroke Care
-                    </Link>
-                  </DropdownMenuItem>
-                  <DropdownMenuItem asChild>
-                    <Link
-                      href="/post-icu-care"
+                      href="/services/post-icu-care"
                       onClick={() => setMobileMenuOpen(false)}
                     >
                       Post-ICU Care
@@ -177,50 +171,66 @@ export function Header() {
                   </DropdownMenuItem>
                   <DropdownMenuItem asChild>
                     <Link
-                      href="/physiotherapy-sessions"
+                      href="/services/post-surgical-care"
                       onClick={() => setMobileMenuOpen(false)}
                     >
-                      Physiotherapy Sessions
+                      Post-Surgical Care
                     </Link>
                   </DropdownMenuItem>
                   <DropdownMenuItem asChild>
                     <Link
-                      href="/live-in-nursing"
+                      href="/services/end-of-life-care"
                       onClick={() => setMobileMenuOpen(false)}
                     >
-                      Live-in Nursing
+                      End-of-Life & Palliative Care
                     </Link>
                   </DropdownMenuItem>
                   <DropdownMenuItem asChild>
                     <Link
-                      href="/rehabilitation-support"
+                      href="/services/geriatric-care"
                       onClick={() => setMobileMenuOpen(false)}
                     >
-                      Rehabilitation Support
+                      Geriatric Care
                     </Link>
                   </DropdownMenuItem>
                   <DropdownMenuItem asChild>
                     <Link
-                      href="/end-of-life-care"
+                      href="/services/chronic-wound-care"
                       onClick={() => setMobileMenuOpen(false)}
                     >
-                      End-of-Life Care
+                      Chronic Wound Care
                     </Link>
                   </DropdownMenuItem>
                   <DropdownMenuItem asChild>
                     <Link
-                      href="/corporate-wellness"
+                      href="/services/home-medical-consultations"
                       onClick={() => setMobileMenuOpen(false)}
                     >
-                      Corporate Wellness
+                      Home Medical Consultations
                     </Link>
                   </DropdownMenuItem>
                   <DropdownMenuItem asChild>
                     <Link
-                      href="/family-support"
+                      href="/services/routine-laboratory-services"
                       onClick={() => setMobileMenuOpen(false)}
                     >
-                      Family Support
+                      Routine Laboratory Services
+                    </Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem asChild>
+                    <Link
+                      href="/services/physiotherapy-services"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      Physiotherapy Services
+                    </Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem asChild>
+                    <Link
+                      href="/services/postpartum-care"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      Postpartum Care
                     </Link>
                   </DropdownMenuItem>
                 </DropdownMenuContent>

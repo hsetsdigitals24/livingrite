@@ -1,3 +1,31 @@
+import { client } from '@/sanity/lib/client'
+import { urlFor } from '@/sanity/lib/image'
+
+export interface BlogPost {
+  _id: string
+  slug: {
+    current: string
+  }
+  title: string
+  excerpt?: string
+  publishedAt: string
+  mainImage?: {
+    asset: {
+      _id: string
+    }
+  }
+  body?: any[]
+}
+
+export interface BlogPostDisplay {
+  slug: string
+  title: string
+  excerpt: string
+  date: string
+  image: string | null
+  content?: string
+}
+
 export const posts = [
   {
     slug: "recovering-after-stroke",
@@ -43,57 +71,66 @@ export const posts = [
   },
 ]
 
-function sanityBaseUrl(projectId: string, dataset = "production") {
-  return `https://${projectId}.api.sanity.io/v2023-10-01/data/query/${dataset}`
-}
-
-async function fetchFromSanity(query: string, params?: Record<string, any>) {
-  const projectId = process.env.SANITY_PROJECT_ID
-  const dataset = process.env.SANITY_DATASET || "production"
-  if (!projectId) return null
-
-  const url = `${sanityBaseUrl(projectId, dataset)}?query=${encodeURIComponent(query)}`
-  // Sanity read endpoints are public for published datasets; token not required for read
-  const res = await fetch(url)
-  if (!res.ok) return null
-  const data = await res.json()
-  return data.result
-}
-
-export async function getPostBySlug(slug: string) {
-  const projectId = process.env.SANITY_PROJECT_ID
-  if (projectId) {
-    const query = `*[_type == "post" && slug.current == "${slug}"][0]{title, excerpt, publishedAt, body, "image": mainImage.asset->url, "slug": slug.current}`
-    const result = await fetchFromSanity(query)
-    if (result) {
-      const p = result
+export async function getPostBySlug(slug: string): Promise<BlogPostDisplay | null> {
+  try {
+    const query = `*[_type == "post" && slug.current == $slug][0]{
+      _id,
+      title,
+      excerpt,
+      publishedAt,
+      body,
+      mainImage,
+      "slug": slug.current
+    }`
+    
+    const post = await client.fetch<BlogPost>(query, { slug })
+    
+    if (post) {
       return {
-        slug: p.slug,
-        title: p.title,
-        excerpt: p.excerpt || "",
-        date: p.publishedAt || "",
-        image: p.image || null,
-        content: p.body ? (Array.isArray(p.body) ? p.body.map((b:any)=>b.children?.map((c:any)=>c.text).join('')).join('\n') : String(p.body)) : "",
+        slug: post.slug.current,
+        title: post.title,
+        excerpt: post.excerpt || "",
+        date: post.publishedAt || "",
+        image: post.mainImage?.asset ? urlFor(post.mainImage).width(800).height(400).url() : null,
+        content: post.body ? parsePortableText(post.body) : "",
       }
     }
+  } catch (error) {
+    console.error('Failed to fetch post from Sanity:', error)
   }
 
   // Fallback to local posts
   return posts.find((p) => p.slug === slug) || null
 }
 
-export async function getPaginatedPosts(page = 1, perPage = 4) {
-  const projectId = process.env.SANITY_PROJECT_ID
-  if (projectId) {
-    const query = `*[_type == "post"] | order(publishedAt desc){"slug": slug.current, title, excerpt, "date": publishedAt, "image": mainImage.asset->url}`
-    const result = await fetchFromSanity(query)
-    if (result) {
-      const total = result.length
+export async function getPaginatedPosts(page = 1, perPage = 4): Promise<{ items: BlogPostDisplay[]; total: number; totalPages: number }> {
+  try {
+    const query = `*[_type == "post"] | order(publishedAt desc){
+      _id,
+      title,
+      excerpt,
+      publishedAt,
+      mainImage,
+      "slug": slug.current
+    }`
+    
+    const allPosts = await client.fetch<BlogPost[]>(query)
+    
+    if (allPosts && allPosts.length > 0) {
+      const total = allPosts.length
       const start = (page - 1) * perPage
-      const items = result.slice(start, start + perPage).map((p:any) => ({ slug: p.slug, title: p.title, excerpt: p.excerpt || "", date: p.date || "", image: p.image || null }))
+      const items = allPosts.slice(start, start + perPage).map((p) => ({
+        slug: p.slug.current,
+        title: p.title,
+        excerpt: p.excerpt || "",
+        date: p.publishedAt || "",
+        image: p.mainImage?.asset ? urlFor(p.mainImage).width(400).height(300).url() : null,
+      }))
       const totalPages = Math.ceil(total / perPage)
       return { items, total, totalPages }
     }
+  } catch (error) {
+    console.error('Failed to fetch posts from Sanity:', error)
   }
 
   // Fallback to local posts
@@ -102,6 +139,19 @@ export async function getPaginatedPosts(page = 1, perPage = 4) {
   const items = posts.slice(start, start + perPage)
   const totalPages = Math.ceil(total / perPage)
   return { items, total, totalPages }
+}
+
+function parsePortableText(blocks: any[]): string {
+  if (!Array.isArray(blocks)) return ""
+  
+  return blocks
+    .map((block) => {
+      if (block._type === "block" && block.children) {
+        return block.children.map((child: any) => child.text || "").join("")
+      }
+      return ""
+    })
+    .join("\n")
 }
 
 export default posts
