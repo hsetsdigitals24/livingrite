@@ -1,16 +1,18 @@
 # LivingRite Care - AI Coding Agent Instructions
 
 ## Project Overview
-**LivingRite Care** is a Next.js 14 healthcare web platform for home-based care services in Nigeria. It includes a public-facing website (homepage, service pages) for lead generation, a Sanity-powered blog with moderated comments system, and testimonials section.
+**LivingRite Care** is a Next.js 14 healthcare web platform for home-based care services in Nigeria. It includes a public-facing website (homepage, service pages) for lead generation, a Sanity-powered blog with moderated comments system, testimonials section, and **real-time multi-calendar booking system** with Calendly, Google Calendar, and Outlook integration.
 
 **Key Tech Stack:**
 - Framework: Next.js 14 (App Router)
 - Styling: Tailwind CSS with Shadcn/ui components
-- CMS: Sanity.io (blogs, testimonials, comments with admin moderation)
+- CMS: Sanity.io (blogs, testimonials, comments, calendar events, bookings, sync logs)
+- Calendar Integration: Calendly API, Google Calendar OAuth2, Microsoft Graph (Outlook)
+- Authentication: NextAuth.js (client portal auth + OAuth2 for calendars)
 - State: TBD (Redux recommended per PRD but not yet implemented)
 - Icons: Lucide-react
 - Animation: Framer Motion
-- Backend: API routes for comments, NextAuth.js (auth), Cloudflare R2 (storage planned)
+- Backend: API routes for comments/bookings/webhooks, Cloudflare R2 (storage planned)
 
 ---
 
@@ -155,10 +157,92 @@ Run: `npx shadcn-ui@latest add [component-name]` (generates to `components/ui/`)
 - **PUT:** Handle non-idempotent updates (likes) with proper error handling
 - **Error responses:** Use `NextResponse.json({ error: "message" }, { status: 400 })`
 
+## Calendar Integration System
+
+### Multi-Calendar Sync Architecture
+- **Calendly Service** (`lib/calendar/calendly.ts`) - Personal scheduling interface
+- **Google Calendar Service** (`lib/calendar/google-calendar.ts`) - OAuth2 integration with push notifications
+- **Outlook Calendar Service** (`lib/calendar/outlook-calendar.ts`) - Microsoft Graph API with subscriptions
+- **Calendar Sync Service** (`lib/calendar/sync-service.ts`) - Central orchestrator for bidirectional sync
+
+### Key Features
+- Real-time availability based on all connected calendars
+- Bidirectional sync (Calendly → Google/Outlook, Google ↔ Outlook)
+- Automatic buffer time between appointments (configurable, 15-min default)
+- Conflict detection for overlapping events
+- Activity logging to Sanity for audit trails
+- Webhook support for real-time updates from each calendar service
+
+### API Endpoints
+- `POST /api/integrations/calendar-sync` - Manually trigger sync
+- `GET /api/integrations/calendar-sync` - Get available time slots
+- `POST /api/webhooks/calendly` - Calendly webhook receiver
+- `POST /api/webhooks/google-calendar` - Google Calendar push notifications
+- `POST /api/webhooks/outlook-calendar` - Outlook subscription notifications
+- `POST /api/integrations/google-calendar-callback` - Google OAuth callback
+- `POST /api/integrations/outlook-calendar-callback` - Outlook OAuth callback
+- `POST /api/bookings` - Create booking
+- `GET /api/bookings` - Get user bookings
+- `DELETE /api/bookings` - Cancel booking
+
+### Booking Components
+- `components/calendar/availability-calendar.tsx` - Slot selection UI
+- `components/calendar/booking-form.tsx` - Client booking form
+
+### Sanity Schema Types for Calendar System
+- `calendarEvent` - Stores synced events from all calendars
+- `syncLog` - Activity log for sync operations
+- `calendarIntegration` - OAuth tokens and integration settings
+- `booking` - Client consultation bookings
+
+### OAuth2 Flow Pattern
+```typescript
+// 1. Initiate OAuth
+const authUrl = googleService.getAuthUrl(scopes)
+// → Redirect user to Google/Microsoft login
+
+// 2. Receive callback with authorization code
+const tokens = await googleService.getTokens(authorizationCode)
+// → Exchange code for access token and refresh token
+
+// 3. Store tokens in Sanity
+await sanityClient.patch(userId).set({
+  googleCalendarIntegration: {
+    accessToken,
+    refreshToken,
+    expiresAt,
+  }
+}).commit()
+
+// 4. Use tokens for API calls
+const events = await googleService.listEvents(tokens)
+```
+
+### Buffer Time Configuration
+```typescript
+bufferConfig = {
+  enabled: true,
+  durationMinutes: 15,          // 15 min between appointments
+  betweenAppointments: true,    // Add buffer between all appointments
+  beforeFirstAppointment: false, // Don't add buffer before first
+  afterLastAppointment: false,   // Don't add buffer after last
+}
+```
+
+### Sync Conflict Resolution
+- Detects overlapping events automatically
+- Creates buffer blocks in all calendars
+- Logs conflicts to Sanity for review
+- Prevents double-booking across calendars
+
 ## When Stuck or Adding Features
 
+- **New calendar features:** Study `lib/calendar/sync-service.ts` for sync orchestration pattern
+- **OAuth issues:** Reference callback routes and service initialization; ensure redirect URIs match exactly
+- **Webhook issues:** Verify signature validation in webhook handlers; check webhook secret in environment
 - **New blog features:** Study `app/blogs/[slug]/page.tsx` (server fetch) and `components/blog/blog-comments.tsx` (client submission)
 - **New Sanity content:** Define schema in `sanity/schemaTypes/`, write GROQ query in `lib/queries.ts` or page component, create API route if mutation needed
 - **API with Sanity:** Reference `app/api/comments/route.ts` for full CRUD pattern with validation and error handling
 - **Styling questions:** Check `app/globals.css` for color system; test in browser DevTools
 - **Build/lint issues:** Run `pnpm lint` to identify issues before asking
+- **Calendar integration:** See `CALENDAR_IMPLEMENTATION_GUIDE.md` and `CALENDAR_ENV_SETUP.md` for comprehensive setup

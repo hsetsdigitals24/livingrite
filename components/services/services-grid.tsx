@@ -329,11 +329,7 @@ export function ServicesGrid() {
           <p className="text-gray-600 mb-6">
             Ready to experience compassionate, professional healthcare?
           </p>
-          <Link
-            target="_blank"
-            href="https://calendly.com/clientservices-livingritecare/30min"
-            className="flex items-center"
-          >
+          <Link href="/booking" className="flex items-center">
             <Button
               size="lg"
               className="text-base font-semibold bg-primary hover:shadow-2xl hover:shadow-primary/30 hover:scale-105 transition-all duration-300 group"

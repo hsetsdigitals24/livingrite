@@ -59,11 +59,7 @@ export function CTABanner() {
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center animate-slide-up animation-delay-600">
-            <Link
-              target="_blank"
-              href="https://calendly.com/clientservices-livingritecare/30min"
-              className="flex items-center"
-            >
+            <Link href="/booking" className="flex items-center">
               <Button
                 size="lg"
                 className="cursor-pointer text-base font-semibold bg-primary hover:shadow-2xl hover:shadow-primary/30 hover:scale-105 transition-all duration-300 group"

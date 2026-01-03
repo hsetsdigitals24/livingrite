@@ -320,13 +320,15 @@ export function ServiceDetail({ slug }: { slug: string }) {
           </p>
 
           {/* CTA Button */}
-          <Button
-            size="lg"
-            className="text-base font-semibold bg-primary hover:shadow-2xl hover:shadow-primary/30 hover:scale-105 transition-all duration-300 group animate-slide-up animation-delay-400"
-          >
-            Book Free Consultation
-            <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-          </Button>
+          <Link href="/booking">
+            <Button
+              size="lg"
+              className="text-base font-semibold bg-primary hover:shadow-2xl hover:shadow-primary/30 hover:scale-105 transition-all duration-300 group animate-slide-up animation-delay-400"
+            >
+              Book Free Consultation
+              <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+            </Button>
+          </Link>
         </div>
 
         {/* Main Content */}

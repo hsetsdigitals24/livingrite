@@ -42,19 +42,15 @@ export function HeroSection() {
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 mb-12 animate-slide-up animation-delay-500">
-              <Button
-                size="lg"
-                className="text-base font-semibold bg-primary hover:shadow-2xl hover:shadow-primary/30 hover:scale-105 transition-all duration-300 group"
-              >
-                <Link
-                  target="_blank"
-                  href="https://calendly.com/clientservices-livingritecare/30min"
-                  className="flex items-center"
+              <Link href="/booking" className="flex items-center">
+                <Button
+                  size="lg"
+                  className="text-base font-semibold bg-primary hover:shadow-2xl hover:shadow-primary/30 hover:scale-105 transition-all duration-300 group"
                 >
                   Book Free Consultation
-                </Link>
-                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-              </Button>
+                  <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                </Button>
+              </Link>
               <Button
                 size="lg"
                 variant="outline"

@@ -143,11 +143,7 @@ export function Header() {
 
           {/* CTA Button */}
           <div className="hidden md:flex">
-            <Link
-              target="_blank"
-              href="https://calendly.com/clientservices-livingritecare/30min"
-              className="w-fit"
-            >
+            <Link href="/booking" className="w-fit">
               <Button
                 size="lg"
                 className="font-semibold rounded-full bg-primary hover:shadow-lg hover:shadow-primary/20 hover:scale-105 transition-all duration-300"
@@ -298,11 +294,7 @@ export function Header() {
                   size="lg"
                   className="w-full mt-2 rounded-full font-semibold bg-primary hover:scale-105 transition-transform duration-300"
                 >
-                  <Link
-                    target="_blank"
-                    href="https://calendly.com/clientservices-livingritecare/30min"
-                    className="flex items-center"
-                  >
+                  <Link href="/booking" className="flex items-center">
                     Book Free Consultation
                   </Link>
                 </Button>
