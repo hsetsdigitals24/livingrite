@@ -8,7 +8,7 @@ export const client = createClient({
   dataset,
   apiVersion,
   useCdn: false, // Disable CDN for faster write operations and consistency
-  token, // Include token for write operations
+  ...(token && { token }), // Include token for write operations if available
 })
 
 // For read-only operations (can use CDN)
