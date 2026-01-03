@@ -79,25 +79,32 @@ export default function AboutPage() {
 				</div>
 			</section>
 
-			{/* Our Story */}
-			<section className="py-12 bg-white">
-				<div className="max-w-4xl mx-auto px-6">
-					<h2 className="text-3xl font-semibold text-primary mb-4">Our Story</h2>
-					<div className="space-y-4 text-gray-700">
-						<p>
-							Livingrite Care was founded in 2021 by Dr. Chidinma Okongwu after she observed a recurring and deeply concerning pattern in patient care. Many patients showed improvement while receiving intensive hospital treatment, especially in the ICU, only to experience a decline in their health shortly after discharge.
-						</p>
+{/* Founder's Story */}
+		<section className="py-12 bg-white">
+			<div className="max-w-4xl mx-auto px-6">
+				<h2 className="text-3xl font-semibold text-primary mb-2">Founder's Story: Why Livingrite Care</h2>
+				<p className="text-gray-600 mb-6 italic">How a clinical observation sparked a healthcare revolution</p>
+				<div className="space-y-4 text-gray-700">
+					<p>
+						Livingrite Care was founded in 2021 by Dr. Chidinma Okongwu after she observed a recurring and deeply concerning pattern in patient care. Many patients showed improvement while receiving intensive hospital treatment, especially in the ICU, only to experience a decline in their health shortly after discharge.
+					</p>
 
-						<p>
-							This deterioration often had little to do with the original illness and everything to do with what happened next. Once patients left the hospital, they lacked adequate medical supervision, structured recovery plans, and professional support during a critical healing phase. As a result, preventable complications became common, leading to unnecessary suffering and avoidable readmissions.
-						</p>
+					<p>
+						This deterioration often had little to do with the original illness and everything to do with what happened next. Once patients left the hospital, they lacked adequate medical supervision, structured recovery plans, and professional support during a critical healing phase. As a result, preventable complications became common, leading to unnecessary suffering and avoidable readmissions.
+					</p>
 
-						<p>
-							Dr. Okongwu also recognized the financial burden faced by many families in Nigeria. Hospital care is largely funded out of pocket, making prolonged admissions extremely expensive and emotionally exhausting. Despite the high costs, patients often remained uncomfortable, disconnected from family, and vulnerable to hospital-related stress.
-						</p>
+					<p>
+						Dr. Okongwu also recognized the financial burden faced by many families in Nigeria. Hospital care is largely funded out of pocket, making prolonged admissions extremely expensive and emotionally exhausting. Despite the high costs, patients often remained uncomfortable, disconnected from family, and vulnerable to hospital-related stress.
+					</p>
 
-						<p>
-							She saw that recovery could be safer, more comfortable, and more sustainable when care continued at home under proper medical supervision. Livingrite Care was created to bridge this gap by providing expert, doctor-led home care that supports patients through recovery, restores dignity, and improves outcomes in an environment where healing feels natural and humane.
+					<p>
+						She saw that recovery could be safer, more comfortable, and more sustainable when care continued at home under proper medical supervision. Livingrite Care was created to bridge this gap by providing expert, doctor-led home care that supports patients through recovery, restores dignity, and improves outcomes in an environment where healing feels natural and humane.
+					</p>
+
+					<p className="pt-4">
+						<Link href="https://medium.com/@livingritecare/nigerias-post-acute-care-gap" target="_blank" rel="noopener noreferrer">
+							<span className="text-primary font-semibold hover:underline">Read Dr. Okongwu's thought leadership article on Nigeria's post-acute care gap →</span>
+						</Link>
 						</p>
 					</div>
 				</div>
@@ -210,9 +217,67 @@ export default function AboutPage() {
 				</div>
 			</section>
 
-			{/* Reuse AboutSection, TrustIndicators, Testimonials, CTA */}
+			{/* Impact Metrics */}
 			<TrustIndicators />
+
+			{/* Client Testimonials */}
 			<TestimonialsSection />
+
+			{/* Resources Hub */}
+			<section className="py-16 bg-white">
+				<div className="max-w-4xl mx-auto px-6">
+					<div className="text-center mb-12">
+						<h2 className="text-3xl font-semibold text-primary mb-3">Resources & Support</h2>
+						<p className="text-gray-600 max-w-2xl mx-auto">Access our collection of free guides, articles, and tools to help you understand home healthcare and make informed decisions about your family's care.</p>
+					</div>
+
+					<div className="grid md:grid-cols-3 gap-6">
+						{/* Care Guides & Checklists */}
+						<div className="border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow">
+							<div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+								<svg className="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+									<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+								</svg>
+							</div>
+							<h3 className="text-lg font-semibold text-gray-900 mb-2">Care Guides & Checklists</h3>
+							<p className="text-gray-600 mb-4 text-sm">Download free resources including post-stroke recovery guides, family caregiver handbooks, and care preparation checklists.</p>
+							<Link href="/resources">
+								<Button variant="outline" className="w-full cursor-pointer">Download Now</Button>
+							</Link>
+						</div>
+
+						{/* Blog & Articles */}
+						<div className="border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow">
+							<div className="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center mb-4">
+								<svg className="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+									<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C6.5 6.253 2 10.998 2 17s4.5 10.747 10 10.747c5.5 0 10-4.998 10-10.747 0-6.002-4.5-10.747-10-10.747z" />
+								</svg>
+							</div>
+							<h3 className="text-lg font-semibold text-gray-900 mb-2">Blog & Articles</h3>
+							<p className="text-gray-600 mb-4 text-sm">Read expert-written articles about home healthcare, recovery tips, wellness advice, and industry insights from our clinical team.</p>
+							<Link href="/blogs">
+								<Button variant="outline" className="w-full cursor-pointer">Read Articles</Button>
+							</Link>
+						</div>
+
+						{/* Book Consultation */}
+						<div className="border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow">
+							<div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+								<svg className="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+									<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+								</svg>
+							</div>
+							<h3 className="text-lg font-semibold text-gray-900 mb-2">Book a Consultation</h3>
+							<p className="text-gray-600 mb-4 text-sm">Ready to discuss your care needs? Schedule a free 15-minute consultation with one of our clinical specialists today.</p>
+							<Link href={process.env.CALENDLY_URLINK || "https://calendly.com/livingrite-care/consultation"} target="_blank" rel="noopener noreferrer">
+								<Button className="w-full cursor-pointer">Schedule Now</Button>
+							</Link>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			{/* Call-to-Action Banner */}
 			<CTABanner />
 		</main>
 	)

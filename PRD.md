@@ -135,13 +135,16 @@ Tertiary CTA: "Browse Case Studies" → /testimonials page
 - Individual service pages at `/services/[service-slug]`
 
 **Services Offered**:
-1. Post-Stroke Care
-2. Post-ICU Care
-3. Physiotherapy Sessions
-4. End-of-Life Care (Palliative)
-5. Live-in Nursing
-6. Rehabilitation Support
-7. Corporate/Organizational Wellness Consultations
+1. Postpartum Care
+2. Physiotherapy Services
+3. Routine Laboratory Services
+4. Home Medical Consultations
+5. Chronic Wound Care
+6. Geriatric Care
+7. End-of-Life & Palliative Care
+8. Post-Surgical Care
+9. Post-ICU Care
+10. Neurorehabilitation Care
 
 **Page Structure** (for each service):
 

@@ -8,7 +8,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { Menu, X, ChevronDown, Search } from "lucide-react";
 import { useState, useEffect } from "react";
 import logo from "@/public/logo.png";
 import Image from "next/image";
@@ -57,32 +57,46 @@ export function Header() {
                 <DropdownMenuItem asChild>
                   <Link href="/services">All Services</Link>
                 </DropdownMenuItem>
-                  <DropdownMenuItem asChild>
-                  <Link href="/services/neurorehabilitation">Neurorehabilitation Care</Link>
+                <DropdownMenuItem asChild>
+                  <Link href="/services/neurorehabilitation">
+                    Neurorehabilitation Care
+                  </Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
                   <Link href="/services/post-icu-care">Post-ICU Care</Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
-                  <Link href="/services/post-surgical-care">Post-Surgical Care</Link>
+                  <Link href="/services/post-surgical-care">
+                    Post-Surgical Care
+                  </Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
-                  <Link href="/services/end-of-life-care">End-of-Life & Palliative Care</Link>
+                  <Link href="/services/end-of-life-care">
+                    End-of-Life & Palliative Care
+                  </Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
                   <Link href="/services/geriatric-care">Geriatric Care</Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
-                  <Link href="/services/chronic-wound-care">Chronic Wound Care</Link>
+                  <Link href="/services/chronic-wound-care">
+                    Chronic Wound Care
+                  </Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
-                  <Link href="/services/home-medical-consultations">Home Medical Consultations</Link>
+                  <Link href="/services/home-medical-consultations">
+                    Home Medical Consultations
+                  </Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
-                  <Link href="/services/routine-laboratory-services">Routine Laboratory Services</Link>
+                  <Link href="/services/routine-laboratory-services">
+                    Routine Laboratory Services
+                  </Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
-                  <Link href="/services/physiotherapy-services">Physiotherapy Services</Link>
+                  <Link href="/services/physiotherapy-services">
+                    Physiotherapy Services
+                  </Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
                   <Link href="/services/postpartum-care">Postpartum Care</Link>
@@ -98,10 +112,17 @@ export function Header() {
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"></span>
             </Link>
             <Link
+              href="/testimonials"
+              className="relative text-gray-700 hover:text-primary transition-colors font-medium group"
+            >
+              Testimonials
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"></span>
+            </Link>
+            <Link
               href="/blogs"
               className="relative text-gray-700 hover:text-primary transition-colors font-medium group"
             >
-              Blogs
+              Resources
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"></span>
             </Link>
             <Link
@@ -111,14 +132,21 @@ export function Header() {
               FAQs
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"></span>
             </Link>
+            <Link
+              href="/search"
+              className="text-gray-700 hover:text-primary transition-colors font-medium hover:scale-110"
+              title="Search articles"
+            >
+              <Search className="w-5 h-5" />
+            </Link>
           </div>
 
           {/* CTA Button */}
-          <div className="hidden md:block">
+          <div className="hidden md:flex">
             <Link
               target="_blank"
               href="https://calendly.com/clientservices-livingritecare/30min"
-              className="flex items-center"
+              className="w-fit"
             >
               <Button
                 size="lg"
@@ -126,6 +154,14 @@ export function Header() {
               >
                 Book Free Consultation
               </Button>
+            </Link>
+
+            <Link
+              target="_blank"
+              href="https://calendly.com/clientservices-livingritecare/30min"
+              className="w-fit flex items-center ml-4 border border-primary px-4 py-2 rounded-full text-primary font-semibold hover:bg-primary hover:text-white transition-colors duration-300"
+            >
+              Login
             </Link>
           </div>
 
@@ -249,18 +285,36 @@ export function Header() {
               >
                 Blogs
               </Link>
-              <Button
-                size="lg"
-                className="w-full mt-2 rounded-full font-semibold bg-primary hover:scale-105 transition-transform duration-300"
+              <Link
+                href="/search"
+                className="text-gray-700 hover:text-primary transition-colors font-medium py-2 px-4 rounded-lg hover:bg-primary/5 flex items-center gap-2"
+                onClick={() => setMobileMenuOpen(false)}
               >
-                <Link
+                <Search className="w-4 h-4" />
+                Search
+              </Link>
+              <div className="">
+                <Button
+                  size="lg"
+                  className="w-full mt-2 rounded-full font-semibold bg-primary hover:scale-105 transition-transform duration-300"
+                >
+                  <Link
+                    target="_blank"
+                    href="https://calendly.com/clientservices-livingritecare/30min"
+                    className="flex items-center"
+                  >
+                    Book Free Consultation
+                  </Link>
+                </Button>
+
+                {/* <Link
                   target="_blank"
                   href="https://calendly.com/clientservices-livingritecare/30min"
-                  className="flex items-center"
+                  className="flex items-center ml-4 border border-primary px-4 py-2 rounded-full text-primary font-semibold hover:bg-primary hover:text-white transition-colors duration-300"
                 >
-                  Book Free Consultation
-                </Link>
-              </Button>
+                  Login
+                </Link> */}
+              </div>
             </div>
           </div>
         )}

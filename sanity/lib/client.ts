@@ -1,10 +1,20 @@
 import { createClient } from 'next-sanity'
 
 import { apiVersion, dataset, projectId } from '../env'
+import { apiToken as token } from '../env'
 
 export const client = createClient({
   projectId,
   dataset,
   apiVersion,
-  useCdn: true, // Set to false if statically generating pages, using ISR or tag-based revalidation
+  useCdn: false, // Disable CDN for faster write operations and consistency
+  token, // Include token for write operations
+})
+
+// For read-only operations (can use CDN)
+export const readOnlyClient = createClient({
+  projectId,
+  dataset,
+  apiVersion,
+  useCdn: true,
 })

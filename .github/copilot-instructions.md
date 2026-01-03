@@ -1,14 +1,16 @@
 # LivingRite Care - AI Coding Agent Instructions
 
 ## Project Overview
-**LivingRite Care** is a Next.js 14 healthcare web platform for home-based care services in Nigeria. It consists of a public-facing website (homepage, service pages) for lead generation and brand presence. The app uses Shadcn/ui components, Tailwind CSS, and TypeScript.
+**LivingRite Care** is a Next.js 14 healthcare web platform for home-based care services in Nigeria. It includes a public-facing website (homepage, service pages) for lead generation, a Sanity-powered blog with moderated comments system, and testimonials section.
 
 **Key Tech Stack:**
 - Framework: Next.js 14 (App Router)
-- Styling: Tailwind CSS with Shadcn/ui
+- Styling: Tailwind CSS with Shadcn/ui components
+- CMS: Sanity.io (blogs, testimonials, comments with admin moderation)
 - State: TBD (Redux recommended per PRD but not yet implemented)
 - Icons: Lucide-react
-- Backend: Sanity.io (CMS), NextAuth.js (auth), Cloudflare R2 (storage)
+- Animation: Framer Motion
+- Backend: API routes for comments, NextAuth.js (auth), Cloudflare R2 (storage planned)
 
 ---
 
@@ -16,23 +18,24 @@
 
 ### Component Organization
 - **`components/`** - Reusable Shadcn/ui primitives and custom components
-- **`components/[service]/`** - Domain-specific components (physiotherapy/, post-stroke/, post-icu/)
+- **`components/[service]/`** - Domain-specific components (physiotherapy/, post-stroke/, post-icu/, end-of-life-care/)
 - **`components/ui/`** - Shadcn/ui library (auto-generated, do not edit)
 - **`components/services/`** - Service discovery components (grid, detail, FAQ, process)
+- **`components/blog/`** - Blog-specific components (posts, comments, filtering, testimonials, newsletter)
 - **`app/`** - Next.js App Router pages (layout.tsx, page.tsx) organized by route
 
 ### Page Routing Pattern
-Routes match service areas with dedicated page components:
 ```
-app/page.tsx                    → Homepage (homepage sections)
+app/page.tsx                    → Homepage
 app/services/page.tsx           → Services listing
 app/services/[slug]/page.tsx    → Individual service detail
-app/post-stroke-care/page.tsx   → Post-stroke service page
-app/post-icu-care/page.tsx      → Post-ICU service page
-app/physiotherapy/page.tsx      → Physiotherapy service page
+app/blogs/page.tsx              → Blog listing with filters
+app/blogs/[slug]/page.tsx       → Individual blog post with comments
+app/testimonials/page.tsx       → Testimonials/case studies
+app/about/page.tsx              → About page
+app/faqs/page.tsx               → FAQ page
+app/search/page.tsx             → Search functionality
 ```
-
-Each service page imports domain-specific components (e.g., `post-stroke-hero`, `post-stroke-features`).
 
 ### Styling & Theme
 - **CSS Variables:** oklch() color system in `app/globals.css` (light/dark modes)
@@ -87,28 +90,22 @@ Run: `npx shadcn-ui@latest add [component-name]` (generates to `components/ui/`)
 - **TypeScript:** Strict mode enabled; use types from Radix/Shadcn
 - **Font:** Inter (base) + Poppins (branded headings) from Google Fonts
 
-### Data Patterns
-- **Static data:** Hardcoded objects in components (e.g., services array in `services-section.tsx`)
-- **No database queries yet:** All content is frontend-only; Sanity.io integration pending
-- **Icons:** Use Lucide-react (`import { IconName } from "lucide-react"`)
-
-### Accessibility & Metadata
-- Each page needs metadata export in `app/[route]/page.tsx`
-- Homepage uses keywords like "home healthcare Nigeria, post-stroke care, physiotherapy"
-- Icons support light/dark mode detection in metadata
-
----
-
 ## Integration Points & Dependencies
 
+### Sanity.io Setup & Studio
+- **Studio location:** `app/studio/[[...tool]]/page.tsx` mounts Sanity Studio at `/studio` route
+- **Schema types:** All document types defined in `sanity/schemaTypes/` (post.ts, comments.ts, testimonials.ts, etc.)
+- **Structure:** `sanity/structure.ts` organizes studio interface (not yet customized for complex workflows)
+- **Vision plugin:** Enabled for GROQ query testing within studio at `/studio`
+- **API versioning:** Set to `2025-12-29` in `sanity/env.ts`
+
 ### External Services (Planned, per PRD)
-- **Sanity.io:** Blog, testimonials, case studies
-- **NextAuth.js:** Authentication for client portal
-- **Cloudflare R2:** File/image storage
-- **Paystack/Stripe:** Payment processing
-- **Mailchimp:** Email/newsletters
-- **Sentry:** Error tracking
-- **Vercel Analytics:** Already integrated
+- **NextAuth.js:** Authentication for client portal (dependency present, not yet integrated)
+- **Cloudflare R2:** File/image storage (planned)
+- **Paystack/Stripe:** Payment processing (planned)
+- **Mailchimp:** Email/newsletters (planned)
+- **Sentry:** Error tracking (planned)
+- **Vercel Analytics:** Already integrated in layout
 
 ### Shadcn/ui Component Usage
 - Wrap content with `<Card><CardContent>` for sections
@@ -137,10 +134,31 @@ Run: `npx shadcn-ui@latest add [component-name]` (generates to `components/ui/`)
 
 ---
 
+## Essential Data Flows & Patterns
+
+### Server vs Client Components
+- **Server Components (default):** Use for data fetching from Sanity (e.g., `app/blogs/[slug]/page.tsx`)
+- **Client Components:** Mark with `'use client'` only when needed (event handlers, state, hooks). Example: `blog-comments.tsx` uses `'use client'` for form submission and like handling
+- **Pattern:** Server fetch → pass data as props to client component (avoid double-fetching)
+
+### GROQ Query Patterns
+- **Fetch all posts:** `*[_type == "post"] | order(publishedAt desc)`
+- **Fetch by slug:** `*[_type == "post" && slug.current == $slug][0]`
+- **Filter approved comments:** `*[_type == "comment" && post._ref == $postId && isApproved == true] | order(timestamp desc)`
+- **Dereference author:** Use `author->` to fetch nested author object in post queries
+- **Reference filtering:** Use `post._ref == $postId` to match reference fields
+- **Ordering:** Use `order()` not `sort()` for GROQ queries
+
+### API Route Patterns
+- **GET:** Fetch filtered/approved data before sending to client
+- **POST:** Validate input (email, content length), create Sanity document, update related arrays
+- **PUT:** Handle non-idempotent updates (likes) with proper error handling
+- **Error responses:** Use `NextResponse.json({ error: "message" }, { status: 400 })`
+
 ## When Stuck or Adding Features
 
-- **New pages:** Reference `app/post-stroke-care/page.tsx` structure
-- **New UI:** Import from `@/components/ui/[primitive]` (Shadcn)
-- **New business logic:** Post-stroke/ICU/physio components show domain patterns
+- **New blog features:** Study `app/blogs/[slug]/page.tsx` (server fetch) and `components/blog/blog-comments.tsx` (client submission)
+- **New Sanity content:** Define schema in `sanity/schemaTypes/`, write GROQ query in `lib/queries.ts` or page component, create API route if mutation needed
+- **API with Sanity:** Reference `app/api/comments/route.ts` for full CRUD pattern with validation and error handling
 - **Styling questions:** Check `app/globals.css` for color system; test in browser DevTools
 - **Build/lint issues:** Run `pnpm lint` to identify issues before asking
