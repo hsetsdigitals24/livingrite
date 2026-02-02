@@ -126,6 +126,13 @@ export function Header() {
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"></span>
             </Link>
             <Link
+              href="/training"
+              className="relative text-gray-700 hover:text-primary transition-colors font-medium group"
+            >
+              Training
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"></span>
+            </Link>
+            <Link
               href="/faqs"
               className="relative text-gray-700 hover:text-primary transition-colors font-medium group"
             >
@@ -280,6 +287,13 @@ export function Header() {
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Blogs
+              </Link>
+              <Link
+                href="/training"
+                className="text-gray-700 hover:text-primary transition-colors font-medium py-2 px-4 rounded-lg hover:bg-primary/5"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Training
               </Link>
               <Link
                 href="/search"
